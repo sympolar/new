@@ -130,9 +130,9 @@ header {
 main { padding-top: 66px; }
 .section {
   max-width: 1100px; margin: 0 auto; padding: 90px 24px;
-  opacity: 0; transform: translateY(22px); transition: opacity .65s ease, transform .65s ease;
+  opacity: 1; transform: none;
 }
-.section.visible { opacity: 1; transform: translateY(0); }
+.section.visible { opacity: 1; transform: none; }
 .section-center { text-align: center; }
 
 /* ── TYPE ── */
@@ -718,14 +718,14 @@ document.getElementById("burger").addEventListener("click", function() {
 });
 
 /* ── ACTIVE NAV ── */
-document.querySelectorAll("section[id]").forEach(s => {
+document.querySelectorAll(".section").forEach(s => {
   new IntersectionObserver(([e]) => {
     if (e.isIntersecting) {
       document.querySelectorAll("#desktop-nav a").forEach(l => l.classList.remove("active"));
       const lnk = document.querySelector(`#desktop-nav a[href="#${s.id}"]`);
       if (lnk) lnk.classList.add("active");
     }
-  }, { threshold: 0.45 }).observe(s);
+  }, { threshold: 0.08 }).observe(s);
 });
 
 /* ── SCR
