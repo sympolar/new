@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Website Onboarding — Sympolar</title>
+<style>
+/* =====================================================
+   SYMPOLAR — SHARED FORM STYLES v2
+   sympolar.com · sympolarllc@gmail.com
+   ===================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&display=swap');
+
+:root {
+  --bg:           #060f1a;
+  --bg-2:         #081525;
+  --txt:          #eef4ff;
+  --muted:        #7a9dbf;
+  --muted2:       #4a6a85;
+  --sky:          #87ceeb;
+  --sky-dim:      rgba(135,206,235,.15);
+  --sky-border:   rgba(135,206,235,.25);
+  --coral:        #ff7f6e;
+  --coral-dim:    rgba(255,127,110,.12);
+  --coral-border: rgba(255,127,110,.3);
+  --peach:        #ffb38a;
+  --mint:         #6de8c8;
+  --gold:         #f5c842;
+  --glass:        rgba(255,255,255,.042);
+  --glass-border: rgba(255,255,255,.085);
+  --glass-hover:  rgba(255,255,255,.075);
+  --radius:       18px;
+  --radius-sm:    12px;
+  --radius-xs:    8px;
+  --shadow:       0 8px 32px rgba(0,0,0,.5), inset 0 1px 0 rgba(255,255,255,.05);
+  --font-d: 'Syne', Georgia, serif;
+  --font-b: 'DM Sans', Georgia, serif;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  background: var(--bg);
+  background-image:
+    radial-gradient(ellipse 80% 50% at 15% -10%, rgba(135,206,235,.07) 0%, transparent 60%),
+    radial-gradient(ellipse 60% 40% at 85% 110%, rgba(255,127,110,.05) 0%, transparent 55%);
+  color: var(--txt); font-family: var(--font-b); font-size: 15px; line-height: 1.65; min-height: 100vh;
+}
+body::before {
+  content: ''; position: fixed; inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.025'/%3E%3C/svg%3E");
+  pointer-events: none; z-index: 0; opacity: 0.4;
+}
+
+/* HEADER */
+.site-header { background: rgba(6,15,26,.94); backdrop-filter: blur(20px); border-bottom: 1px solid var(--glass-border); position: sticky; top: 0; z-index: 100; }
+.header-inner { max-width: 860px; margin: 0 auto; padding: 13px 28px; display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+.header-brand { font-family: var(--font-d); font-size: 13px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--sky); text-decoration: none; }
+.header-nav { display: flex; gap: 6px; flex-wrap: wrap; }
+.header-nav a { font-family: var(--font-d); font-size: 10px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); text-decoration: none; padding: 5px 11px; border-radius: 100px; border: 1px solid transparent; transition: all 0.2s; }
+.header-nav a:hover { color: var(--txt); border-color: var(--glass-border); }
+.header-nav a.active { color: var(--sky); border-color: var(--sky-border); background: var(--sky-dim); }
+
+/* PIPELINE */
+.pipeline-bar { background: var(--bg-2); border-bottom: 1px solid var(--glass-border); padding: 14px 0; }
+.pipeline-inner { max-width: 860px; margin: 0 auto; padding: 0 28px; display: flex; align-items: center; }
+.pipe-step { display: flex; align-items: center; gap: 8px; font-family: var(--font-d); font-size: 10px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted2); text-decoration: none; padding: 5px 10px; border-radius: 6px; transition: color 0.2s; white-space: nowrap; }
+.pipe-step:hover { color: var(--muted); }
+.pipe-step.current { color: var(--sky); }
+.pipe-step.done { color: var(--mint); }
+.pipe-num { width: 20px; height: 20px; border-radius: 50%; border: 1.5px solid currentColor; display: flex; align-items: center; justify-content: center; font-size: 9px; }
+.pipe-step.done .pipe-num { background: rgba(109,232,200,.15); }
+.pipe-step.current .pipe-num { background: var(--sky-dim); }
+.pipe-arrow { color: var(--muted2); font-size: 10px; padding: 0 4px; user-select: none; }
+
+/* HERO */
+.form-hero { background: var(--bg-2); text-align: center; padding: 56px 24px 44px; border-bottom: 1px solid var(--glass-border); position: relative; overflow: hidden; }
+.form-hero::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 1px; background: linear-gradient(90deg, transparent, var(--sky-border) 40%, var(--coral-border) 60%, transparent); }
+.hero-tag { display: inline-block; font-family: var(--font-d); font-size: 10px; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: var(--coral); background: var(--coral-dim); border: 1px solid var(--coral-border); padding: 5px 14px; border-radius: 100px; margin-bottom: 18px; }
+.form-hero h1 { font-family: var(--font-d); font-size: clamp(26px, 4.5vw, 44px); font-weight: 800; line-height: 1.08; letter-spacing: -0.02em; margin-bottom: 10px; }
+.form-hero h1 em { font-style: normal; background: linear-gradient(135deg, var(--sky), var(--mint)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+.form-hero p { color: var(--muted); max-width: 480px; margin: 0 auto 14px; font-size: 14px; font-weight: 300; }
+.hero-meta { display: inline-flex; align-items: center; gap: 8px; font-size: 11px; color: var(--muted2); background: var(--glass); border: 1px solid var(--glass-border); padding: 6px 14px; border-radius: 100px; }
+.hero-meta span { color: var(--gold); font-weight: 500; }
+
+/* CONTAINER */
+.container { max-width: 860px; margin: 0 auto; padding: 40px 28px 90px; position: relative; z-index: 1; }
+
+/* CARDS */
+.card { background: var(--glass); border: 1px solid var(--glass-border); border-radius: var(--radius); padding: 24px 26px; margin-bottom: 16px; box-shadow: var(--shadow); }
+.card-title { font-family: var(--font-d); font-size: 11px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--sky); margin-bottom: 18px; padding-bottom: 12px; border-bottom: 1px solid var(--glass-border); display: flex; align-items: center; gap: 8px; }
+.card-icon { font-size: 14px; }
+
+/* FIELDS */
+.field-group { display: grid; grid-template-columns: 1fr; gap: 14px; }
+.field-group.two { grid-template-columns: 1fr 1fr; }
+.field-group.three { grid-template-columns: 1fr 1fr 1fr; }
+@media (max-width: 600px) { .field-group.two, .field-group.three { grid-template-columns: 1fr; } }
+.field { display: flex; flex-direction: column; gap: 6px; }
+.field label { font-size: 11px; font-weight: 500; color: var(--muted); letter-spacing: 0.05em; text-transform: uppercase; display: flex; align-items: center; gap: 6px; flex-wrap: wrap; }
+.opt { color: var(--muted2); font-weight: 400; font-size: 10px; letter-spacing: 0; text-transform: none; }
+.req { color: var(--coral); font-size: 10px; }
+.field input, .field select, .field textarea { background: rgba(255,255,255,.05); border: 1px solid var(--glass-border); border-radius: var(--radius-xs); color: var(--txt); font-family: var(--font-b); font-size: 14px; padding: 11px 13px; outline: none; width: 100%; transition: border-color 0.2s, background 0.2s; }
+.field input:focus, .field select:focus, .field textarea:focus { border-color: var(--sky-border); background: rgba(135,206,235,.04); }
+.field input::placeholder, .field textarea::placeholder { color: var(--muted2); }
+.field select { appearance: none; cursor: pointer; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%234a6a85' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 13px center; padding-right: 36px; }
+.field select option { background: #0e1f35; }
+.field textarea { resize: vertical; min-height: 90px; }
+.field-hint { font-size: 11px; color: var(--muted2); margin-top: 2px; }
+
+/* FILE UPLOAD */
+.upload-zone { border: 2px dashed var(--glass-border); border-radius: var(--radius-sm); padding: 28px 20px; text-align: center; cursor: pointer; transition: all 0.25s; position: relative; background: rgba(255,255,255,.02); }
+.upload-zone:hover, .upload-zone.drag-over { border-color: var(--sky-border); background: var(--sky-dim); }
+.upload-zone input[type="file"] { position: absolute; inset: 0; opacity: 0; cursor: pointer; width: 100%; height: 100%; }
+.upload-icon { font-size: 28px; margin-bottom: 8px; }
+.upload-label { font-family: var(--font-d); font-size: 12px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); }
+.upload-hint { font-size: 11px; color: var(--muted2); margin-top: 4px; }
+.file-list { margin-top: 12px; display: flex; flex-direction: column; gap: 6px; }
+.file-chip { display: flex; align-items: center; gap: 10px; background: var(--sky-dim); border: 1px solid var(--sky-border); border-radius: 8px; padding: 7px 12px; font-size: 12px; color: var(--sky); }
+.file-chip .fname { flex: 1; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.file-chip .fsize { color: var(--muted2); font-size: 11px; white-space: nowrap; }
+.file-chip .fremove { cursor: pointer; color: var(--muted2); font-size: 14px; line-height: 1; padding: 0 2px; }
+.file-chip .fremove:hover { color: var(--coral); }
+
+/* PILLS / CHECKBOXES */
+.pill-group { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 4px; }
+.pill { position: relative; cursor: pointer; }
+.pill input { position: absolute; opacity: 0; width: 0; height: 0; }
+.pill .pl { padding: 7px 14px; border-radius: 100px; border: 1px solid var(--glass-border); background: var(--glass); font-size: 13px; color: var(--muted); transition: all 0.2s; white-space: nowrap; cursor: pointer; display: block; }
+.pill input:checked + .pl { background: var(--sky-dim); border-color: var(--sky-border); color: var(--sky); font-weight: 500; }
+.check-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 8px; margin-top: 6px; }
+.check-item { display: flex; align-items: flex-start; gap: 9px; background: var(--glass); border: 1px solid var(--glass-border); border-radius: var(--radius-xs); padding: 9px 12px; cursor: pointer; transition: all 0.2s; }
+.check-item:hover { background: var(--glass-hover); }
+.check-item input[type="checkbox"] { appearance: none; width: 15px; height: 15px; min-width: 15px; border: 1.5px solid var(--muted2); border-radius: 3px; cursor: pointer; transition: all 0.2s; position: relative; margin-top: 2px; }
+.check-item input[type="checkbox"]:checked { background: var(--sky); border-color: var(--sky); }
+.check-item input[type="checkbox"]:checked::after { content: '✓'; position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; font-size: 9px; color: #050d18; font-weight: 900; }
+.check-item .cl { font-size: 13px; color: var(--muted); line-height: 1.4; }
+.check-item input:checked ~ .cl { color: var(--txt); }
+
+/* SUBMIT */
+.btn-submit { display: inline-flex; align-items: center; gap: 10px; background: linear-gradient(135deg, var(--sky), var(--mint)); color: #050d18; font-family: var(--font-d); font-size: 14px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; border: none; border-radius: 10px; padding: 14px 28px; cursor: pointer; transition: opacity 0.2s, transform 0.15s; margin-top: 8px; }
+.btn-submit:hover { opacity: 0.88; transform: translateY(-1px); }
+.btn-submit:active { transform: translateY(0); }
+.btn-submit:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
+.submit-wrap { display: flex; flex-direction: column; gap: 10px; }
+.progress-bar-wrap { display: none; background: var(--glass-border); border-radius: 4px; height: 4px; overflow: hidden; }
+.progress-bar-fill { height: 100%; background: linear-gradient(90deg, var(--sky), var(--mint)); border-radius: 4px; width: 0%; transition: width 0.3s ease; }
+.status-msg { font-size: 12px; color: var(--muted); display: none; }
+
+/* OPTIONAL BADGE */
+.optional-badge { display: inline-block; font-family: var(--font-d); font-size: 9px; font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gold); background: rgba(245,200,66,.1); border: 1px solid rgba(245,200,66,.25); padding: 3px 9px; border-radius: 100px; vertical-align: middle; margin-left: 8px; }
+
+/* SUCCESS */
+.success-screen { display: none; text-align: center; padding: 80px 24px; }
+.success-icon { font-size: 52px; margin-bottom: 20px; }
+.success-screen h2 { font-family: var(--font-d); font-size: 32px; font-weight: 800; margin-bottom: 10px; }
+.success-screen p { color: var(--muted); font-size: 14px; max-width: 400px; margin: 0 auto 28px; }
+.success-links { display: flex; justify-content: center; gap: 12px; flex-wrap: wrap; }
+.success-links a { padding: 10px 20px; border-radius: 8px; border: 1px solid var(--sky-border); background: var(--sky-dim); color: var(--sky); font-family: var(--font-d); font-size: 11px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; text-decoration: none; transition: all 0.2s; }
+.success-links a:hover { background: rgba(135,206,235,.25); }
+
+/* FOOTER */
+.form-footer { background: var(--bg-2); border-top: 1px solid var(--glass-border); padding: 20px 28px; text-align: center; font-size: 12px; color: var(--muted2); }
+.form-footer a { color: var(--muted); text-decoration: none; }
+.form-footer a:hover { color: var(--sky); }
+
+/* RESPONSIVE */
+@media (max-width: 640px) {
+  .header-inner { padding: 11px 16px; }
+  .container { padding: 28px 16px 70px; }
+  .card { padding: 18px 16px; }
+  .pipeline-inner { overflow-x: auto; scrollbar-width: none; }
+  .pipeline-inner::-webkit-scrollbar { display: none; }
+  .pipe-step span:last-child { display: none; }
+}
+
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="header-inner">
+    <a class="header-brand" href="https://www.sympolar.com">Sympolar</a>
+    <nav class="header-nav">
+      <a href="contact.html">Contact</a>
+      <a href="inquiry.html">Inquiry</a>
+      <a href="onboarding.html" class="active">Onboarding</a>
+      <a href="added-touch.html">Added Touch</a>
+    </nav>
+  </div>
+</header>
+
+<div class="pipeline-bar">
+  <div class="pipeline-inner">
+    <a class="pipe-step done" href="contact.html"><span class="pipe-num">✓</span><span>Contact</span></a>
+    <span class="pipe-arrow">→</span>
+    <a class="pipe-step done" href="inquiry.html"><span class="pipe-num">✓</span><span>Inquiry</span></a>
+    <span class="pipe-arrow">→</span>
+    <a class="pipe-step current" href="onboarding.html"><span class="pipe-num">3</span><span>Onboarding</span></a>
+    <span class="pipe-arrow">→</span>
+    <a class="pipe-step" href="added-touch.html"><span class="pipe-num">4</span><span>Added Touch</span></a>
+  </div>
+</div>
+
+<section class="form-hero">
+  <div class="hero-tag">Step 3 of 4 — Basic Plan</div>
+  <h1>Website <em>Onboarding</em></h1>
+  <p>Everything we need to build your static website. Fill in what you have — nothing is required today.</p>
+  <div class="hero-meta"><span>⏱ ~5 minutes</span> &nbsp;·&nbsp; Static site only &nbsp;·&nbsp; No financials discussed here</div>
+</section>
+
+<div class="container">
+  <div id="success-screen" class="success-screen">
+    <div class="success-icon">🐻‍❄️</div>
+    <h2>Onboarding complete.</h2>
+    <p>Everything saved to Sympolar's system. We'll be in touch to move things forward.</p>
+    <div class="success-links">
+      <a href="added-touch.html">Add Optional Details →</a>
+      <a href="https://www.sympolar.com">Back to Sympolar</a>
+    </div>
+  </div>
+
+  <div id="form-body">
+    <form id="the-form" onsubmit="submitForm(event)">
+
+      <div class="card">
+        <div class="card-title"><span class="card-icon">👤</span> Owner / Operator</div>
+        <div class="field-group two">
+          <div class="field"><label>Owner / Contact Name</label><input type="text" name="Owner_Name" placeholder="Your name"></div>
+          <div class="field"><label>Your Role / Title <span class="opt">(optional)</span></label><input type="text" name="Owner_Title" placeholder="Owner, Chef, Manager…"></div>
+        </div>
+        <div class="field-group two" style="margin-top:14px;">
+          <div class="field"><label>Best Contact Email</label><input type="email" name="Owner_Email" placeholder="you@yourbusiness.com"></div>
+          <div class="field"><label>Best Contact Phone</label><input type="tel" name="Owner_Phone" placeholder="(555) 000-0000"></div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-title"><span class="card-icon">🏢</span> Business Identity</div>
+        <div class="field-group two">
+          <div class="field"><label>Business Name</label><input type="text" name="Business_Name" placeholder="Full legal or DBA name"></div>
+          <div class="field"><label>Tagline <span class="opt">(optional)</span></label><input type="text" name="Tagline" placeholder="A short phrase that describes you"></div>
+        </div>
+        <div class="field" style="margin-top:14px;">
+          <label>Business Description</label>
+          <textarea name="Business_Description" placeholder="Describe your business in plain language — what you do, who you serve, what makes you different." rows="5"></textarea>
+        </div>
+        <div class="field-group two" style="margin-top:14px;">
+          <div class="field"><label>Industry / Category</label><input type="text" name="Industry" placeholder="Restaurant, salon, contractor…"></div>
+          <div class="field"><label>Years in Business <span class="opt">(optional)</span></label><input type="text" name="Years_In_Business" placeholder="e.g. 3 years, since 2019"></div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-title"><span class="card-icon">📍</span> Location &amp; Contact Info for Website</div>
+        <div class="field"><label>Business Address</label><input type="text" name="Address" placeholder="Street, City, State, ZIP"></div>
+        <div class="field-group two" style="margin-top:14px;">
+          <div class="field"><label>Phone (for website)</label><input type="tel" name="Public_Phone" placeholder="Number shown on site"></div>
+          <div class="field"><label>Email (for website)</label><input type="email" name="Public_Email" placeholder="Contact email shown on site"></div>
+        </div>
+        <div class="field-group two" style="margin-top:14px;">
+          <div class="field"><label>Website Domain <span class="opt">(if you have one)</span></label><input type="text" name="Domain" placeholder="yourbusiness.com"></div>
+          <div class="field"><label>Service Area <span class="opt">(optional)</span></label><input type="text" name="Service_Area" placeholder="e.g. Greater Tampa Bay, nationwide"></div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-title"><span class="card-icon">🕐</span> Hours of Operation</div>
+        <div class="field">
+          <label>Hours <span class="opt">(any format is fine)</span></label>
+          <textarea name="Hours_of_Operation" placeholder="Mon–Fri: 9am–6pm&#10;Saturday: 10am–4pm&#10;Sunday: Closed&#10;&#10;Or just describe it — we'll format it." rows="5"></textarea>
+        </div>
+        <div class="field" style="margin-top:14px;">
+          <label>Seasonal or Holiday Notes <span class="opt">(optional)</span></label>
+          <textarea name="Hours_Notes" placeholder="Closed Christmas week, extended summer hours, etc." rows="2"></textarea>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-title"><span class="card-icon">📋</span> Services &amp; Menu</div>
+        <div class="field">
+          <label>Services or Menu Items</label>
+          <textarea name="Services_Menu" placeholder="List your services, dishes, or offerings. Paste from a menu, type a rough list — anything helps. We'll format it." rows="8"></textarea>
+        </div>
+        <div class="field-group two" style="margin-top:14px;">
+          <div class="field">
+            <label>Show Pricing on Site?</label>
+            <div class="pill-group">
+              <label class="pill"><input type="radio" name="Show_Pricing" value="Yes"><span class="pl">Yes</span></label>
+              <label class="pill"><input type="radio" name="Show_Pricing" value="No"><span class="pl">No</span></label>
+              <label class="pill"><input type="radio" name="Show_Pricing" value="Some items"><span class="pl">Some items</span></label>
+              <label class="pill"><input type="radio" name="Show_Pricing" value="Not sure"><span class="pl">Not sure</span></label>
+            </div>
+          </div>
+          <div class="field">
+            <label>Age Restriction? <span class="opt">(optional)</span></label>
+            <input type="text" name="Age_Restriction" placeholder="e.g. 21+, 18+ for certain services">
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-title"><span class="card-icon">🖼</span> Gallery &amp; Photos</div>
+        <div class="field">
+          <label>Do you have photos to use?</label>
+          <div class="pill-group">
+            <label class="pill"><input type="radio" name="Has_Photos" value="Yes, many"><span class="pl">Yes — lots</span></label>
+            <label class="pill"><input type="radio" name="Has_Photos" value="Yes, a few"><span class="pl">Yes — a few</span></label>
+            <label class="pill"><input type="radio" name="Has_Photos" value="No — need stock"><span class="pl">No — use stock photos</span></label>
+            <label class="pill"><input type="radio" name="Has_Photos" value="Not sure"><span class="pl">Not sure yet</span></label>
+          </div>
+        </div>
+        <div class="field" style="margin-top:14px;">
+          <label>Gallery Description <span class="opt">(what we'll show)</span></label>
+          <textarea name="Gallery_Description" placeholder="Food photos, interior, staff, product shots, before/after… describe what you'd want." rows="3"></textarea>
+        </div>
+        <div class="field" style="margin-top:16px;">
+          <label>Upload Photos / Logo / Documents <span class="opt">(optional — upload directly or share a Drive link below)</span></label>
+          <div class="upload-zone" id="zone1">
+            <input type="file" id="files1" multiple accept="image/*,.pdf,.doc,.docx,.ai,.svg,.eps,.txt,.zip,.heic">
+            <div class="upload-icon">🖼</div>
+            <div class="upload-label">Drop files or click to browse</div>
+            <div class="upload-hint">Photos, logo, menu PDF, brand docs · Any format · Max 25MB each · Upload multiple at once</div>
+          </div>
+          <div class="file-list" id="list1"></div>
+        </div>
+        <div class="field" style="margin-top:14px;">
+          <label>Or share a Drive / Dropbox link <span class="opt">(optional)</span></label>
+          <input type="url" name="Photo_Link" placeholder="https://drive.google.com/...">
+          <span class="field-hint">For large batches — share the folder link and we'll pull everything from there.</span>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-title"><span class="card-icon">🎨</span> Brand &amp; Visual Style</div>
+        <div class="field-group two">
+          <div class="field">
+            <label>Do you have a logo?</label>
+            <div class="pill-group">
+              <label class="pill"><input type="radio" name="Has_Logo" value="Yes"><span class="pl">Yes</span></label>
+              <label class="pill"><input type="radio" name="Has_Logo" value="No"><span class="pl">No</span></label>
+              <label class="pill"><input type="radio" name="Has_Logo" value="Need one"><span class="pl">Need one</span></label>
+            </div>
+          </div>
+          <div class="field">
+            <label>Brand Colors <span class="opt">(hex or describe)</span></label>
+            <input type="text" name="Brand_Colors" placeholder="#1a2b3c, deep navy, warm gold…">
+          </div>
+        </div>
+        <div class="field" style="margin-top:14px;">
+          <label>Visual vibe</label>
+          <div class="pill-group">
+            <label class="pill"><input type="checkbox" name="Visual_Style" value="Clean / minimal"><span class="pl">Clean / minimal</span></label>
+            <label class="pill"><input type="checkbox" name="Visual_Style" value="Bold / modern"><span class="pl">Bold / modern</span></label>
+            <label class="pill"><input type="checkbox" name="Visual_Style" value="Warm / rustic"><span class="pl">Warm / rustic</span></label>
+            <label class="pill"><input type="checkbox" name="Visual_Style" value="Luxury / upscale"><span class="pl">Luxury / upscale</span></label>
+            <label class="pill"><input type="checkbox" name="Visual_Style" value="Playful / fun"><span class="pl">Playful / fun</span></label>
+            <label class="pill"><input type="checkbox" name="Visual_Style" value="Dark / moody"><span class="pl">Dark / moody</span></label>
+          </div>
+        </div>
+        <div class="field" style="margin-top:14px;">
+          <label>Words / tones to avoid <span class="opt">(optional)</span></label>
+          <input type="text" name="Avoid_Words" placeholder="e.g. avoid flashy, avoid corporate tone, avoid the color red">
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-title"><span class="card-icon">📄</span> Pages for Your Site</div>
+        <div class="check-grid">
+          <label class="check-item"><input type="checkbox" name="Pages" value="Home"><span class="cl">🏠 Home</span></label>
+          <label class="check-item"><input type="checkbox" name="Pages" value="About"><span class="cl">👤 About / Our Story</span></label>
+          <label class="check-item"><input type="checkbox" name="Pages" value="Services"><span class="cl">🛠 Services</span></label>
+          <label class="check-item"><input type="checkbox" name="Pages" value="Menu"><span class="cl">🍽 Menu</span></label>
+          <label class="check-item"><input type="checkbox" name="Pages" value="Gallery"><span class="cl">🖼 Gallery</span></label>
+          <label class="check-item"><input type="checkbox" name="Pages" value="Hours"><span class="cl">🕐 Hours &amp; Location</span></label>
+          <label class="check-item"><input type="checkbox" name="Pages" value="Contact"><span class="cl">📬 Contact Us</span></label>
+          <label class="check-item"><input type="checkbox" name="Pages" value="FAQ"><span class="cl">❓ FAQ</span></label>
+          <label class="check-item"><input type="checkbox" name="Pages" value="Testimonials"><span class="cl">⭐ Testimonials</span></label>
+          <label class="check-item"><input type="checkbox" name="Pages" value="Team"><span class="cl">👥 Meet the Team</span></label>
+        </div>
+        <div class="field" style="margin-top:14px;">
+          <label>Other pages <span class="opt">(optional)</span></label>
+          <input type="text" name="Custom_Pages" placeholder="Any other pages not listed above">
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-title"><span class="card-icon">📱</span> Social Media</div>
+        <div class="field-group two">
+          <div class="field"><label>Instagram</label><input type="url" name="Instagram" placeholder="https://instagram.com/yourbiz"></div>
+          <div class="field"><label>Facebook</label><input type="url" name="Facebook" placeholder="https://facebook.com/yourbiz"></div>
+        </div>
+        <div class="field-group two" style="margin-top:14px;">
+          <div class="field"><label>Google Business Profile <span class="opt">(optional)</span></label><input type="url" name="Google_Business" placeholder="Link to your GMB listing"></div>
+          <div class="field"><label>Other Social <span class="opt">(TikTok, Yelp, LinkedIn…)</span></label><input type="text" name="Other_Social" placeholder="Platform: URL"></div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-title"><span class="card-icon">📝</span> Final Notes</div>
+        <div class="field">
+          <label>Anything else we should know?</label>
+          <textarea name="Additional_Notes" placeholder="Competitors you'd like to outshine, launch timeline, things that matter to you about this site." rows="4"></textarea>
+        </div>
+      </div>
+
+      <div class="submit-wrap">
+        <button type="submit" class="btn-submit" id="submit-btn">Submit Onboarding →</button>
+        <div class="progress-bar-wrap" id="prog-wrap"><div class="progress-bar-fill" id="prog-fill"></div></div>
+        <div class="status-msg" id="status-msg"></div>
+      </div>
+      <p style="color:var(--muted2);font-size:12px;margin-top:10px;">
+        Want to add extra detail, references, or credentials? <a href="added-touch.html" style="color:var(--sky);text-decoration:none;">Continue to Added Touch →</a>
+      </p>
+    </form>
+  </div>
+</div>
+
+<footer class="form-footer">
+  <strong style="color:var(--txt);">Sympolar</strong> &nbsp;·&nbsp;
+  <a href="https://www.sympolar.com">sympolar.com</a> &nbsp;·&nbsp;
+  sympolarllc@gmail.com
+</footer>
+
+<script>
+/**
+ * SYMPOLAR FORMS
+ *
+ * SETUP — do this ONE time, takes 2 minutes:
+ *
+ *   1. On your phone or computer, go to:
+ *      https://script.google.com/create
+ *
+ *   2. You'll see a blank code editor. Delete everything in it.
+ *
+ *   3. Open the file called GOOGLE_SCRIPT.js (included in this folder)
+ *      and copy ALL of it. Paste it into that editor.
+ *
+ *   4. Click the blue "Deploy" button (top right)
+ *      → "New deployment"
+ *      → click the gear icon next to "Type" → pick "Web app"
+ *      → "Execute as" = Me
+ *      → "Who has access" = Anyone
+ *      → click Deploy
+ *      → click "Authorize access" and sign in with sympolarllc@gmail.com
+ *      → copy the URL it shows you (starts with https://script.google.com/macros...)
+ *
+ *   5. Paste that URL below, replacing the placeholder text.
+ *
+ * That's it. Forms will email you AND save to Google Sheets.
+ */
+
+const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzbXIEkM98gOmtKEChsyWkkHSRdW0AQdgeb1ZYcEHxYFn2tVkaUqZDHF2kPElMNVyMKOg/exec';
+
+// ── FILE UPLOAD ZONE ──────────────────────────────────────────
+function initUploadZone(zoneId, inputId, listId) {
+  const zone  = document.getElementById(zoneId);
+  const input = document.getElementById(inputId);
+  const list  = document.getElementById(listId);
+  if (!zone || !input || !list) return;
+  zone.addEventListener('dragover',  e => { e.preventDefault(); zone.classList.add('drag-over'); });
+  zone.addEventListener('dragleave', () => zone.classList.remove('drag-over'));
+  zone.addEventListener('drop', e => {
+    e.preventDefault();
+    zone.classList.remove('drag-over');
+    addFiles(e.dataTransfer.files, input, list);
+  });
+  input.addEventListener('change', () => addFiles(input.files, input, list));
+}
+
+function addFiles(newFiles, input, list) {
+  const dt = new DataTransfer();
+  if (input._staged) input._staged.forEach(f => dt.items.add(f));
+  Array.from(newFiles).forEach(f => dt.items.add(f));
+  input._staged = Array.from(dt.files);
+  renderFileList(input._staged, input, list);
+}
+
+function removeFile(index, inputId, listId) {
+  const input = document.getElementById(inputId);
+  const list  = document.getElementById(listId);
+  input._staged.splice(index, 1);
+  renderFileList(input._staged, input, list);
+}
+
+function renderFileList(files, input, list) {
+  list.innerHTML = '';
+  files.forEach((f, i) => {
+    const chip = document.createElement('div');
+    chip.className = 'file-chip';
+    chip.innerHTML = `
+      <span style="font-size:15px;">${fileIcon(f.name)}</span>
+      <span class="fname">${f.name}</span>
+      <span class="fsize">${fmtSize(f.size)}</span>
+      <span class="fremove" onclick="removeFile(${i},'${input.id}','${list.id}')" title="Remove">✕</span>`;
+    list.appendChild(chip);
+  });
+}
+
+function fileIcon(n) {
+  const e = n.split('.').pop().toLowerCase();
+  if (['jpg','jpeg','png','gif','webp','svg','heic'].includes(e)) return '🖼';
+  if (e === 'pdf') return '📄';
+  if (['ai','eps','psd'].includes(e)) return '🎨';
+  if (['doc','docx','txt'].includes(e)) return '📝';
+  if (['zip','rar'].includes(e)) return '📦';
+  return '📎';
+}
+
+function fmtSize(b) {
+  if (b < 1024) return b + ' B';
+  if (b < 1048576) return (b/1024).toFixed(1) + ' KB';
+  return (b/1048576).toFixed(1) + ' MB';
+}
+
+// ── COLLECT FIELDS ────────────────────────────────────────────
+function collectFields(formId) {
+  const data = {};
+  document.getElementById(formId).querySelectorAll('input,select,textarea').forEach(el => {
+    if (!el.name || el.type === 'file') return;
+    if (el.type === 'radio' && !el.checked) return;
+    if (el.type === 'checkbox') {
+      if (el.checked) data[el.name] = data[el.name] ? data[el.name] + ', ' + el.value : el.value;
+      return;
+    }
+    if (el.value.trim()) data[el.name] = el.value.trim();
+  });
+  return data;
+}
+
+// ── COLLECT FILES ─────────────────────────────────────────────
+async function collectFiles(...ids) {
+  const all = [];
+  for (const id of ids) {
+    const input = document.getElementById(id);
+    if (!input) continue;
+    for (const file of (input._staged || [])) {
+      try {
+        const b64 = await new Promise((res, rej) => {
+          const r = new FileReader();
+          r.onload  = () => res(r.result.split(',')[1]);
+          r.onerror = rej;
+          r.readAsDataURL(file);
+        });
+        all.push({ name: file.name, type: file.type || 'application/octet-stream', data: b64 });
+      } catch(e) { console.warn('skipped file', file.name); }
+    }
+  }
+  return all;
+}
+
+// ── SUBMIT ────────────────────────────────────────────────────
+async function submitToSympolar(formType, fields, files, btnId, progWrapId, progFillId, statusId, formBodyId, successId) {
+  const btn    = document.getElementById(btnId);
+  const wrap   = document.getElementById(progWrapId);
+  const fill   = document.getElementById(progFillId);
+  const status = document.getElementById(statusId);
+
+  if (GOOGLE_SCRIPT_URL === 'PASTE_THE_URL_FROM_STEP_4_HERE') {
+    alert('Almost ready! Open js/sympolar-forms.js and paste your Google Script URL at the top. See SETUP instructions inside that file.');
+    return;
+  }
+
+  btn.disabled = true;
+  btn.textContent = 'Sending…';
+  wrap.style.display = 'block';
+  status.style.display = 'block';
+  status.textContent = files.length ? `Uploading ${files.length} file(s)…` : 'Saving…';
+
+  let pct = 0;
+  const tick = setInterval(() => { pct = Math.min(pct + (files.length ? 1.5 : 6), 88); fill.style.width = pct + '%'; }, 100);
+
+  try {
+    await fetch(GOOGLE_SCRIPT_URL, {
+      method: 'POST',
+      mode: 'no-cors',
+      headers: { 'Content-Type': 'text/plain' },
+      body: JSON.stringify({ formType, fields, files })
+    });
+    clearInterval(tick);
+    fill.style.width = '100%';
+    status.textContent = 'Sent ✓';
+    setTimeout(() => {
+      document.getElementById(formBodyId).style.display = 'none';
+      document.getElementById(successId).style.display  = 'block';
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }, 400);
+  } catch(err) {
+    clearInterval(tick);
+    btn.disabled = false;
+    btn.textContent = 'Try Again →';
+    fill.style.width = '0%';
+    fill.style.background = 'var(--coral)';
+    status.textContent = 'Connection error — check your internet and try again.';
+  }
+}
+
+</script>
+<script>
+  initUploadZone('zone1','files1','list1');
+  async function submitForm(e) {
+    e.preventDefault();
+    const field
