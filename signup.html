@@ -607,11 +607,9 @@ async function submitForm(e) {
       files: [...fileStore.zone1, ...fileStore.zone2]
     });
 
-    // FormData survives Google's redirect; JSON body does not
-    const fd = new FormData();
-    fd.append('payload', payload);
-
-    await fetch(GOOGLE_SCRIPT_URL, { method: 'POST', mode: 'no-cors', body: fd });
+    // GET with URL params — only method GAS reliably receives through no-cors redirect
+    const url = GOOGLE_SCRIPT_URL + '?payload=' + encodeURIComponent(payload);
+    await fetch(url, { method: 'GET', mode: 'no-cors' });
 
     clearInterval(ticker);
     fill.style.width = '100%';
