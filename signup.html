@@ -905,7 +905,7 @@ async function submitForm(e) {
   }, 100);
 
   try {
-    await fetch(GOOGLE_SCRIPT_URL, {
+    await fetch('https://script.google.com/macros/s/AKfycbwBOWVSXC7nnRKFBGZVXqlUyapgLlvdGK5qhrsPd7mIP8klzIBBmTxtFMkxXfWGpLKyyA/exec', {
       method: 'POST',
       mode: 'no-cors',
       headers: { 'Content-Type': 'text/plain' },
