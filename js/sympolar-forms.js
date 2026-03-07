@@ -25,7 +25,7 @@
  * That's it. Forms will email you AND save to Google Sheets.
  */
 
-const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzbXIEkM98gOmtKEChsyWkkHSRdW0AQdgeb1ZYcEHxYFn2tVkaUqZDHF2kPElMNVyMKOg/exec';
+const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbysVU1uv90wsNCAW-5LHw9xPZZb1ZTthRSDtClNoEsdVi9L_PJdQsw9Wh45qp6wqEkMfQ/exec';
 
 // ── FILE UPLOAD ZONE ──────────────────────────────────────────
 function initUploadZone(zoneId, inputId, listId) {
