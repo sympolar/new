@@ -130,9 +130,9 @@ header {
 main { padding-top: 66px; }
 .section {
   max-width: 1100px; margin: 0 auto; padding: 90px 24px;
-  opacity: 1; transform: none;
+  opacity: 0; transform: translateY(22px); transition: opacity .65s ease, transform .65s ease;
 }
-.section.visible { opacity: 1; transform: none; }
+.section.visible { opacity: 1; transform: translateY(0); }
 .section-center { text-align: center; }
 
 /* ── TYPE ── */
@@ -351,6 +351,96 @@ footer { border-top: 1px solid var(--glassB); padding: 54px 24px 64px; margin-to
 @media (max-width: 420px) {
   .stats-row { grid-template-columns: 1fr 1fr; gap: 12px; }
 }
+
+/* ── NATIVE INTAKE FORM ── */
+.form-embed-wrap {
+  max-width: 780px; margin: 40px auto 0;
+  display: flex; flex-direction: column; align-items: stretch; gap: 0;
+}
+.native-form-card {
+  background: linear-gradient(135deg, rgba(135,206,235,.06), rgba(109,232,200,.03));
+  border: 1px solid var(--sky25);
+  border-radius: var(--r);
+  padding: 44px 48px;
+  box-shadow: var(--shadow), var(--glow2);
+  position: relative; overflow: hidden;
+}
+.native-form-card::before {
+  content: "";
+  position: absolute; top: 0; left: 0; right: 0; height: 2px;
+  background: linear-gradient(90deg, transparent, var(--sky), var(--mint), transparent);
+}
+.form-step-label {
+  font-family: "Syne", sans-serif; font-weight: 700; font-size: 11px;
+  text-transform: uppercase; letter-spacing: .12em; color: var(--sky);
+  margin-bottom: 28px;
+}
+.form-group { display: flex; flex-direction: column; gap: 7px; margin-bottom: 18px; }
+.form-row-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+.form-group label {
+  font-size: 13px; font-weight: 600; color: var(--muted);
+  letter-spacing: .01em;
+}
+.req { color: var(--sky); }
+.form-group input,
+.form-group textarea,
+.form-group select {
+  background: rgba(255,255,255,.04);
+  border: 1px solid var(--glassB);
+  border-radius: 10px;
+  color: var(--txt); font-family: "DM Sans", sans-serif; font-size: 14.5px;
+  padding: 12px 16px;
+  outline: none; resize: vertical;
+  transition: border-color .2s, background .2s;
+  -webkit-appearance: none; appearance: none;
+}
+.form-group select { cursor: pointer; }
+.form-group select option { background: #0c1b2a; color: var(--txt); }
+.form-group input::placeholder,
+.form-group textarea::placeholder { color: var(--muted2); }
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus {
+  border-color: var(--sky25);
+  background: rgba(135,206,235,.06);
+}
+.form-group input.invalid,
+.form-group textarea.invalid,
+.form-group select.invalid { border-color: var(--coral); }
+.form-err {
+  color: var(--coral); font-size: 13.5px; margin-bottom: 14px;
+  padding: 10px 14px; border-radius: 8px;
+  background: rgba(255,127,110,.08); border: 1px solid rgba(255,127,110,.2);
+}
+.form-submit-btn { margin-top: 8px; position: relative; }
+.btn-spin {
+  width: 18px; height: 18px; border-radius: 50%;
+  border: 2px solid rgba(135,206,235,.3);
+  border-top-color: var(--sky);
+  animation: spin .7s linear infinite;
+  display: inline-block;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+.form-note {
+  color: var(--muted2); font-size: 12px; text-align: center;
+  font-style: italic; margin-top: 14px;
+}
+.form-success-card {
+  background: linear-gradient(135deg, rgba(135,206,235,.07), rgba(109,232,200,.04));
+  border: 1px solid var(--sky25);
+  border-radius: var(--r); padding: 64px 44px;
+  text-align: center; position: relative; overflow: hidden;
+  box-shadow: var(--shadow), var(--glow2);
+}
+.form-success-card::before {
+  content: "";
+  position: absolute; top: 0; left: 0; right: 0; height: 2px;
+  background: linear-gradient(90deg, transparent, var(--mint), var(--sky), transparent);
+}
+@media (max-width: 680px) {
+  .native-form-card { padding: 28px 20px; }
+  .form-row-2 { grid-template-columns: 1fr; gap: 0; }
+}
 </style>
 </head>
 <body>
@@ -518,50 +608,104 @@ footer { border-top: 1px solid var(--glassB); padding: 54px 24px 64px; margin-to
 <hr class="section-divider">
 
 <!-- ═════════════════════════════════════════
-     GET STARTED — FORM LINKS
+     GET STARTED — EMBEDDED FORM
      ═════════════════════════════════════════ -->
 <section id="intake" class="section section-center">
   <div class="accent-line"></div>
   <h2>🚀 Ready to <span class="grad">Get Started?</span></h2>
-  <p class="sub">Use the form that fits where you are. Each one takes just a few minutes — no tech knowledge needed at any step.</p>
+  <p class="sub">Fill out the form below — no tech knowledge needed, no commitment required. We'll get back to you within 1 business day.</p>
 
-  <div class="grid-auto" style="margin-top:40px;max-width:900px;margin-left:auto;margin-right:auto;">
+  <!-- Native form — submits to Google Apps Script endpoint via fetch (no redirect) -->
+  <div class="form-embed-wrap">
 
-    <a href="contact.html" class="card" style="text-decoration:none;cursor:pointer;display:block;">
-      <div style="font-size:32px;margin-bottom:14px;">👋</div>
-      <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--sky);margin-bottom:8px;">Step 1 · 30 seconds</div>
-      <h3 style="font-size:20px;margin-bottom:8px;">Quick Contact</h3>
-      <p style="color:var(--muted);font-size:14px;line-height:1.65;margin-bottom:20px;">Just your name and how to reach you. Tell us what you're thinking — we'll take it from there within 24 hours.</p>
-      <span style="color:var(--sky);font-size:14px;font-weight:600;">Start here →</span>
-    </a>
+    <!-- ── STATE: DEFAULT FORM ── -->
+    <div class="native-form-card" id="form-card">
 
-    <a href="inquiry.html" class="card" style="text-decoration:none;cursor:pointer;display:block;">
-      <div style="font-size:32px;margin-bottom:14px;">📋</div>
-      <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--sky);margin-bottom:8px;">Step 2 · ~2 minutes</div>
-      <h3 style="font-size:20px;margin-bottom:8px;">Project Inquiry</h3>
-      <p style="color:var(--muted);font-size:14px;line-height:1.65;margin-bottom:20px;">Tell us about your business and goals. Helps us scope the right approach and get you a clear path forward.</p>
-      <span style="color:var(--sky);font-size:14px;font-weight:600;">Fill out inquiry →</span>
-    </a>
+      <div class="form-step-label">✦ &nbsp; Takes about 2 minutes</div>
 
-    <a href="onboarding.html" class="card" style="text-decoration:none;cursor:pointer;display:block;border-color:var(--sky25);background:linear-gradient(135deg,rgba(135,206,235,.06),rgba(109,232,200,.03));">
-      <div style="font-size:32px;margin-bottom:14px;">🏗️</div>
-      <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--mint);margin-bottom:8px;">Step 3 · ~5 minutes</div>
-      <h3 style="font-size:20px;margin-bottom:8px;">Full Onboarding</h3>
-      <p style="color:var(--muted);font-size:14px;line-height:1.65;margin-bottom:20px;">Everything we need to build your site. Business info, pages, style, logo uploads. The more you give us, the better we build.</p>
-      <span style="color:var(--mint);font-size:14px;font-weight:600;">Begin onboarding →</span>
-    </a>
+      <form id="sympolar-form" novalidate>
 
-    <a href="added-touch.html" class="card" style="text-decoration:none;cursor:pointer;display:block;">
-      <div style="font-size:32px;margin-bottom:14px;">✦</div>
-      <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--gold);margin-bottom:8px;">Step 4 · Optional</div>
-      <h3 style="font-size:20px;margin-bottom:8px;">Added Touch</h3>
-      <p style="color:var(--muted);font-size:14px;line-height:1.65;margin-bottom:20px;">Awards, press, testimonials, brand story, design references. For clients who want to go deep — all optional, all welcome.</p>
-      <span style="color:var(--gold);font-size:14px;font-weight:600;">Add the details →</span>
-    </a>
+        <div class="form-row-2">
+          <div class="form-group">
+            <label for="f-name">Your Name <span class="req">*</span></label>
+            <input type="text" id="f-name" name="name" placeholder="Jane Smith" required autocomplete="name">
+          </div>
+          <div class="form-group">
+            <label for="f-biz">Business Name <span class="req">*</span></label>
+            <input type="text" id="f-biz" name="businessName" placeholder="Smith & Co." required autocomplete="organization">
+          </div>
+        </div>
+
+        <div class="form-row-2">
+          <div class="form-group">
+            <label for="f-email">Email Address <span class="req">*</span></label>
+            <input type="email" id="f-email" name="email" placeholder="jane@example.com" required autocomplete="email">
+          </div>
+          <div class="form-group">
+            <label for="f-phone">Phone Number</label>
+            <input type="tel" id="f-phone" name="phone" placeholder="(555) 123-4567" autocomplete="tel">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="f-industry">What does your business do? <span class="req">*</span></label>
+          <input type="text" id="f-industry" name="industry" placeholder="e.g. Hair salon, plumbing, photography, bakery…" required>
+        </div>
+
+        <div class="form-group">
+          <label for="f-goals">What do you want your website to do for you?</label>
+          <textarea id="f-goals" name="goals" rows="3" placeholder="Get more customers, show my menu, let people book appointments, tell my story…"></textarea>
+        </div>
+
+        <div class="form-row-2">
+          <div class="form-group">
+            <label for="f-timeline">When do you want to launch?</label>
+            <select id="f-timeline" name="timeline">
+              <option value="">— Select one —</option>
+              <option>As soon as possible</option>
+              <option>Within 2 weeks</option>
+              <option>Within a month</option>
+              <option>No rush, just exploring</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="f-domain">Do you have a domain / web address?</label>
+            <select id="f-domain" name="hasDomain">
+              <option value="">— Select one —</option>
+              <option>Yes, I already have one</option>
+              <option>No, I need one</option>
+              <option>Not sure</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="f-extra">Anything else you'd like us to know?</label>
+          <textarea id="f-extra" name="extra" rows="2" placeholder="Special requests, questions, existing social links…"></textarea>
+        </div>
+
+        <div id="form-err" class="form-err" style="display:none;"></div>
+
+        <button type="submit" class="btn btn-primary btn-full form-submit-btn" id="form-submit">
+          <span id="btn-label">Send My Info →</span>
+          <span id="btn-spinner" class="btn-spin" style="display:none;"></span>
+        </button>
+
+        <p class="form-note">No credit card. No commitment. We respond within 1 business day.</p>
+      </form>
+    </div>
+
+    <!-- ── STATE: SUCCESS ── -->
+    <div class="form-success-card" id="form-success" style="display:none;">
+      <div style="font-size:48px;margin-bottom:18px;">🎉</div>
+      <h3 style="font-size:24px;margin-bottom:10px;color:var(--ice);">You're on your way!</h3>
+      <p style="color:var(--muted);font-size:15px;max-width:420px;margin:0 auto 28px;line-height:1.75;">
+        We got your info and will be in touch within <strong style="color:var(--txt);">1 business day</strong>. Keep an eye on your inbox.
+      </p>
+      <a href="#home" class="btn btn-outline" style="font-size:14px;">← Back to top</a>
+    </div>
 
   </div>
-
-  <p style="color:var(--muted2);font-size:13px;margin-top:28px;">Not sure where to start? <a href="contact.html" style="color:var(--sky);text-decoration:none;">Quick Contact</a> is always the right first step.</p>
 </section>
 
 <hr class="section-divider">
@@ -573,7 +717,7 @@ footer { border-top: 1px solid var(--glassB); padding: 54px 24px 64px; margin-to
   <div class="section-center">
     <div class="accent-line"></div>
     <h2><span class="grad">FAQ</span> — Plain-English Answers</h2>
-    <p class="sub">Every answer is jargon-free. If you still have questions, <a href="/cdn-cgi/l/email-protection#384b4155485754594a54545b785f55595154165b5755" style="color:var(--sky);">just email us</a>.</p>
+    <p class="sub">Every answer is jargon-free. If you still have questions, <a href="/cdn-cgi/l/email-protection#7102081c011e1d10031d1d1231161c10181d5f121e1c" style="color:var(--sky);">just email us</a>.</p>
   </div>
 
   <div class="faq-list" id="faq-list"></div>
@@ -599,7 +743,7 @@ footer { border-top: 1px solid var(--glassB); padding: 54px 24px 64px; margin-to
     <p style="color:var(--muted);font-size:16px;max-width:420px;margin:0 auto 32px;line-height:1.7;">
       Professional design. Real humans. $50 a month. No commitment until you're happy with what we build.
     </p>
-    <a href="contact.html" class="btn btn-primary" style="font-size:17px;padding:18px 44px;">Start My Website →</a>
+    <a href="#intake" class="btn btn-primary" style="font-size:17px;padding:18px 44px;">Start My Website →</a>
     <p style="color:var(--muted2);font-size:12.5px;margin-top:18px;">No credit card. No tech skills. We respond within 1 business day.</p>
   </div>
 </section>
@@ -624,13 +768,10 @@ footer { border-top: 1px solid var(--glassB); padding: 54px 24px 64px; margin-to
       <a href="#faq">FAQ</a>
     </div>
     <div class="footer-col">
-      <h4>Forms</h4>
-      <a href="contact.html">Quick Contact</a>
-      <a href="inquiry.html">Project Inquiry</a>
-      <a href="onboarding.html">Onboarding</a>
-      <a href="added-touch.html">Added Touch</a>
+      <h4>Get Started</h4>
+      <a href="#intake">Start My Website</a>
       <h4 style="margin-top:20px;">Contact</h4>
-      <a href="/cdn-cgi/l/email-protection#f7848e9a87989b96859b9b94b7909a969e9bd994989a"><span class="__cf_email__" data-cfemail="12616b7f627d7e73607e7e7152757f737b7e3c717d7f">[email&#160;protected]</span></a>
+      <a href="/cdn-cgi/l/email-protection#6f1c16021f00030e1d03030c2f08020e0603410c0002"><span class="__cf_email__" data-cfemail="8af9f3e7fae5e6ebf8e6e6e9caede7ebe3e6a4e9e5e7">[email&#160;protected]</span></a>
       <a href="https://www.sympolar.com">sympolar.com</a>
     </div>
   </div>
@@ -718,14 +859,108 @@ document.getElementById("burger").addEventListener("click", function() {
 });
 
 /* ── ACTIVE NAV ── */
-document.querySelectorAll(".section").forEach(s => {
+document.querySelectorAll("section[id]").forEach(s => {
   new IntersectionObserver(([e]) => {
     if (e.isIntersecting) {
       document.querySelectorAll("#desktop-nav a").forEach(l => l.classList.remove("active"));
       const lnk = document.querySelector(`#desktop-nav a[href="#${s.id}"]`);
       if (lnk) lnk.classList.add("active");
     }
-  }, { threshold: 0.08 }).observe(s);
+  }, { threshold: 0.45 }).observe(s);
 });
 
-/* ── SCR
+/* ── SCROLL REVEAL ── */
+const revealObserver = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add("visible");
+      revealObserver.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.08 });
+document.querySelectorAll(".section:not(.visible)").forEach(s => revealObserver.observe(s));
+
+/* ── INTAKE FORM SUBMIT ── */
+(function() {
+  const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxUx0fOPoP4LM9uaxI47qvpcUGhhSDsmfDUZUp8kUmIzhZm5P4AIlxjJELOjNeKa_Cs/exec";
+
+  const form    = document.getElementById("sympolar-form");
+  const btnLbl  = document.getElementById("btn-label");
+  const btnSpn  = document.getElementById("btn-spinner");
+  const btnEl   = document.getElementById("form-submit");
+  const errEl   = document.getElementById("form-err");
+  const card    = document.getElementById("form-card");
+  const success = document.getElementById("form-success");
+
+  function setLoading(on) {
+    btnEl.disabled = on;
+    btnLbl.style.display  = on ? "none"         : "inline";
+    btnSpn.style.display  = on ? "inline-block" : "none";
+  }
+
+  function showErr(msg) {
+    errEl.textContent = msg;
+    errEl.style.display = "block";
+  }
+
+  function validate() {
+    let ok = true;
+    ["f-name","f-biz","f-email","f-industry"].forEach(id => {
+      const el = document.getElementById(id);
+      if (!el.value.trim()) { el.classList.add("invalid"); ok = false; }
+      else el.classList.remove("invalid");
+    });
+    const email = document.getElementById("f-email");
+    if (email.value && !/\S+@\S+\.\S+/.test(email.value)) {
+      email.classList.add("invalid"); ok = false;
+    }
+    return ok;
+  }
+
+  form.addEventListener("submit", async function(e) {
+    e.preventDefault();
+    errEl.style.display = "none";
+
+    if (!validate()) {
+      showErr("Please fill in the required fields marked with ✦");
+      return;
+    }
+
+    setLoading(true);
+
+    /* Build a plain object from the form */
+    const data = {};
+    new FormData(form).forEach((v, k) => { data[k] = v; });
+    data.formType = "contact"; /* tells your Apps Script which tab to use */
+    data.submittedAt = new Date().toISOString();
+
+    try {
+      /* no-cors fetch — Apps Script requires this from external origins */
+      await fetch(SCRIPT_URL, {
+        method: "POST",
+        mode: "no-cors",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data)
+      });
+      /* no-cors gives opaque response — treat any completion as success */
+      card.style.display    = "none";
+      success.style.display = "block";
+      success.scrollIntoView({ behavior: "smooth", block: "center" });
+    } catch (err) {
+      setLoading(false);
+      showErr("Something went wrong. Please try again or email us directly.");
+      console.error("Form submit error:", err);
+    }
+  });
+
+  /* Clear invalid state on input */
+  form.querySelectorAll("input, textarea, select").forEach(el => {
+    el.addEventListener("input", () => el.classList.remove("invalid"));
+  });
+})();
+
+renderFAQ();
+renderGlossary();
+</script>
+</body>
+</html>
