@@ -1,0 +1,1770 @@
+<!DOCTYPE html>
+<!-- ════════════════════════════════════════════════════════════
+     SYMPOLAR LLC — CLIENT INTAKE FORM
+     Author: Vincent Gonzalez | © 2026 SymPolar LLC
+     File: form.html | sympolar.com
+     ════════════════════════════════════════════════════════════ -->
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Website Launch Authorization — Client Intake | SymPolar LLC</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300&display=swap" rel="stylesheet">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&display=swap');
+/* ══════════════════════════════════════════════
+   PALETTE — Midnight Gradient · Sky · Coral
+   Syne display · DM Sans body
+══════════════════════════════════════════════ */
+:root {
+  --bg:           #060f1a;
+  --bg-2:         #081525;
+  --bg-card:      rgba(255,255,255,.045);
+  --txt:          #eef4ff;
+  --muted:        #7a9dbf;
+  --muted2:       #4a6a85;
+  --sky:          #87ceeb;
+  --sky-dim:      rgba(135,206,235,.15);
+  --coral:        #ff7f6e;
+  --coral-dim:    rgba(255,127,110,.12);
+  --peach:        #ffb38a;
+  --orange:       #ff8c42;
+  --mint:         #6de8c8;
+  --gold:         #f5c842;
+  --violet:       #a78bfa;
+  --glass:        rgba(255,255,255,.042);
+  --glass-border: rgba(255,255,255,.085);
+  --glass-hover:  rgba(255,255,255,.075);
+  --radius:       20px;
+  --radius-sm:    13px;
+  --radius-xs:    8px;
+  --shadow:       0 8px 32px rgba(0,0,0,.5), inset 0 1px 0 rgba(255,255,255,.05);
+  --shadow-lift:  0 20px 60px rgba(0,0,0,.6), 0 4px 16px rgba(0,0,0,.35), inset 0 1px 0 rgba(255,255,255,.07);
+  --glow-sky:     0 0 30px rgba(135,206,235,.2);
+  --glow-coral:   0 0 30px rgba(255,127,110,.2);
+  --font-display: 'Syne', 'Georgia', serif;
+  --font-body:    'DM Sans', 'Georgia', ui-serif, serif;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--bg);
+  background-image:
+    radial-gradient(ellipse 80% 50% at 15% -10%, rgba(135,206,235,.07) 0%, transparent 60%),
+    radial-gradient(ellipse 60% 40% at 85% 110%, rgba(255,127,110,.06) 0%, transparent 55%),
+    radial-gradient(ellipse 40% 60% at 50% 50%, rgba(167,139,250,.04) 0%, transparent 70%);
+  color: var(--txt);
+  font-family: var(--font-body);
+  font-size: 15px;
+  line-height: 1.65;
+  min-height: 100vh;
+}
+
+body::before {
+  content: '';
+  position: fixed; inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.025'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.4;
+}
+
+/* ── HEADER ── */
+.site-header {
+  background: rgba(6,15,26,.88);
+  backdrop-filter: blur(20px) saturate(1.4);
+  -webkit-backdrop-filter: blur(20px) saturate(1.4);
+  border-bottom: 1px solid var(--glass-border);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+.header-inner {
+  max-width: 880px;
+  margin: 0 auto;
+  padding: 14px 28px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+}
+.header-brand-wrap { display: flex; align-items: center; gap: 10px; }
+.header-logo { width: 36px; height: 36px; object-fit: contain; border-radius: 8px; background: rgba(135,206,235,.08); }
+.header-brand { font-family: var(--font-display); font-size: 15px; font-weight: 800; color: var(--sky); letter-spacing: 0.04em; line-height: 1; }
+.header-sub { font-family: var(--font-display); font-size: 10px; font-weight: 500; color: var(--muted2); letter-spacing: 0.12em; text-transform: uppercase; margin-top: 2px; }
+.header-progress { display: flex; align-items: center; gap: 12px; flex: 1; max-width: 300px; }
+.progress-track { flex: 1; height: 2px; background: var(--glass-border); border-radius: 2px; overflow: hidden; }
+.progress-fill { height: 100%; background: linear-gradient(90deg, var(--sky), var(--mint)); border-radius: 2px; transition: width 0.5s cubic-bezier(0.4,0,0.2,1); width: 11.1%; }
+.progress-text { font-family: var(--font-display); font-size: 11px; font-weight: 500; color: var(--muted); white-space: nowrap; min-width: 46px; text-align: right; }
+
+/* ── HERO ── */
+.hero { background: var(--bg-2); text-align: center; padding: 80px 24px 68px; position: relative; overflow: hidden; border-bottom: 1px solid var(--glass-border); }
+.hero::before { content: ''; position: absolute; top: -100px; left: 50%; transform: translateX(-50%); width: 700px; height: 500px; background: radial-gradient(ellipse, rgba(135,206,235,.1) 0%, transparent 65%); pointer-events: none; }
+.hero::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 1px; background: linear-gradient(90deg, transparent 0%, rgba(135,206,235,.4) 40%, rgba(255,179,138,.4) 60%, transparent 100%); }
+.hero-logo-wrap { margin-bottom: 20px; position: relative; display: inline-block; }
+.hero-logo { width: 90px; height: 90px; object-fit: contain; filter: drop-shadow(0 0 24px rgba(135,206,235,.4)); animation: floatBear 4s ease-in-out infinite; }
+@keyframes floatBear { 0%, 100% { transform: translateY(0px); } 50% { transform: translateY(-8px); } }
+.hero-tag { font-family: var(--font-display); font-size: 11px; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: var(--sky); background: var(--sky-dim); border: 1px solid rgba(135,206,235,.25); padding: 6px 16px; border-radius: 100px; margin-bottom: 28px; display: inline-block; position: relative; }
+.hero h1 { font-family: var(--font-display); font-size: clamp(38px, 6vw, 66px); font-weight: 800; line-height: 1.02; margin-bottom: 18px; letter-spacing: -0.02em; position: relative; color: var(--txt); }
+.hero h1 em { font-style: normal; background: linear-gradient(135deg, var(--sky) 0%, var(--coral) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+.hero p { color: var(--muted); max-width: 500px; margin: 0 auto; font-size: 15px; line-height: 1.75; position: relative; font-weight: 300; }
+.hero-badges { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; margin-top: 28px; position: relative; }
+.hero-badge { font-family: var(--font-display); font-size: 12px; font-weight: 600; padding: 6px 14px; border-radius: 100px; background: var(--glass); border: 1px solid var(--glass-border); color: var(--muted); letter-spacing: 0.04em; }
+
+/* ── STEP PIPS ── */
+.steps-bar { background: var(--bg-2); border-bottom: 1px solid var(--glass-border); padding: 12px 0 14px; }
+.steps-inner { max-width: 880px; margin: 0 auto; padding: 0 28px; display: flex; gap: 5px; overflow-x: auto; scrollbar-width: none; }
+.steps-inner::-webkit-scrollbar { display: none; }
+.step-pip { flex: 1; height: 3px; background: var(--glass-border); border-radius: 3px; transition: background 0.35s, opacity 0.35s; min-width: 20px; }
+.step-pip.active { background: linear-gradient(90deg, var(--sky), var(--mint)); }
+.step-pip.done { background: rgba(135,206,235,.3); }
+
+/* ── CONTAINER ── */
+.container { max-width: 880px; margin: 0 auto; padding: 52px 28px 120px; position: relative; z-index: 1; }
+
+/* ── SECTIONS ── */
+.form-section { display: none; }
+.form-section.active { display: block; animation: slideIn 0.4s cubic-bezier(0.4,0,0.2,1); }
+@keyframes slideIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+.section-label { font-family: var(--font-display); font-size: 11px; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--sky); display: block; margin-bottom: 12px; }
+.section-title { font-family: var(--font-display); font-size: clamp(26px, 4vw, 38px); font-weight: 800; line-height: 1.1; margin-bottom: 10px; letter-spacing: -0.02em; color: var(--txt); }
+.section-sub { color: var(--muted); font-size: 14px; margin-bottom: 36px; max-width: 520px; font-weight: 300; line-height: 1.7; }
+
+/* ── CARD ── */
+.card { background: var(--glass); backdrop-filter: blur(12px) saturate(1.2); -webkit-backdrop-filter: blur(12px) saturate(1.2); border: 1px solid var(--glass-border); border-radius: var(--radius); padding: 32px 36px; margin-bottom: 16px; box-shadow: var(--shadow); position: relative; overflow: hidden; }
+.card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px; background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,.1) 50%, transparent 100%); }
+
+/* ── FIELD ── */
+.field { margin-bottom: 28px; }
+.field:last-child { margin-bottom: 0; }
+.field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+.field-label { display: flex; align-items: baseline; gap: 6px; margin-bottom: 9px; font-family: var(--font-display); font-size: 13px; font-weight: 600; color: var(--txt); letter-spacing: 0.01em; }
+.req { color: var(--coral); font-size: 11px; }
+.opt { color: var(--muted2); font-size: 11px; font-weight: 400; font-family: var(--font-body); }
+.field-hint { font-size: 12px; color: var(--muted2); margin-top: 7px; line-height: 1.55; font-weight: 300; }
+.field-error { font-size: 12px; color: var(--coral); margin-top: 7px; display: none; align-items: center; gap: 5px; font-weight: 500; }
+.field-error.visible { display: flex; }
+.field-error::before { content: '↑'; font-family: var(--font-display); }
+
+/* ── INPUTS ── */
+input[type=text], input[type=email], input[type=tel], input[type=url], input[type=date], select, textarea {
+  width: 100%; padding: 12px 16px; border: 1px solid var(--glass-border); border-radius: var(--radius-xs);
+  font-family: var(--font-body); font-size: 14px; font-weight: 400; color: var(--txt);
+  background: rgba(255,255,255,.04); transition: border-color 0.2s, box-shadow 0.2s, background 0.2s;
+  -webkit-appearance: none; appearance: none;
+}
+input:focus, select:focus, textarea:focus { outline: none; border-color: rgba(135,206,235,.5); background: rgba(135,206,235,.05); box-shadow: 0 0 0 3px rgba(135,206,235,.1); }
+input.has-error, select.has-error, textarea.has-error { border-color: rgba(255,127,110,.5); box-shadow: 0 0 0 3px rgba(255,127,110,.1); }
+textarea { resize: vertical; min-height: 96px; }
+select { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='%234a6a85'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 14px center; padding-right: 36px; cursor: pointer; }
+select option { background: #0d1f33; color: var(--txt); }
+::placeholder { color: var(--muted2); font-weight: 300; }
+
+/* ── CHOICE BUTTONS ── */
+.choices { display: flex; flex-wrap: wrap; gap: 8px; }
+.choices.stack { flex-direction: column; }
+.choices.grid-2 { display: grid; grid-template-columns: 1fr 1fr; }
+.choices.grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); }
+.choice-btn { display: flex; align-items: center; gap: 10px; padding: 12px 16px; border: 1px solid var(--glass-border); border-radius: var(--radius-xs); cursor: pointer; user-select: none; transition: border-color 0.18s, background 0.18s, box-shadow 0.18s; font-family: var(--font-body); font-size: 13px; font-weight: 400; background: rgba(255,255,255,.03); color: var(--muted); line-height: 1.4; text-align: left; }
+.choice-btn:hover { border-color: rgba(135,206,235,.35); background: var(--sky-dim); color: var(--txt); }
+.choice-btn.selected { border-color: rgba(135,206,235,.5); background: var(--sky-dim); color: var(--sky); font-weight: 500; box-shadow: 0 0 0 1px rgba(135,206,235,.2) inset; }
+.radio-dot { width: 15px; height: 15px; border: 2px solid var(--muted2); border-radius: 50%; flex-shrink: 0; transition: border-color 0.18s, background 0.18s; display: flex; align-items: center; justify-content: center; }
+.choice-btn.selected .radio-dot { border-color: var(--sky); background: var(--sky); }
+.radio-dot::after { content: ''; width: 5px; height: 5px; border-radius: 50%; background: var(--bg); opacity: 0; transition: opacity 0.15s; }
+.choice-btn.selected .radio-dot::after { opacity: 1; }
+.check-box { width: 15px; height: 15px; border: 2px solid var(--muted2); border-radius: 3px; flex-shrink: 0; transition: border-color 0.18s, background 0.18s; display: flex; align-items: center; justify-content: center; font-size: 9px; font-weight: 800; color: var(--bg); }
+.choice-btn.selected .check-box { border-color: var(--sky); background: var(--sky); }
+.choice-btn.selected .check-box::after { content: '✓'; }
+.choice-btn input[type=radio], .choice-btn input[type=checkbox] { display: none; }
+
+/* ── CONDITIONAL ── */
+.conditional { display: none; margin-top: 20px; }
+.conditional.visible { display: block; animation: slideIn 0.25s ease; }
+
+/* ── DIVIDER ── */
+.divider { border: none; border-top: 1px solid var(--glass-border); margin: 28px 0; }
+
+/* ── LEGAL SECTION ── */
+.legal-banner { background: rgba(245,200,66,.04); border: 1px solid rgba(245,200,66,.18); border-radius: var(--radius); padding: 32px 36px; margin-bottom: 16px; position: relative; overflow: hidden; }
+.legal-banner::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px; background: linear-gradient(90deg, transparent, rgba(245,200,66,.3), transparent); }
+.legal-banner-head { display: flex; align-items: center; gap: 14px; margin-bottom: 22px; }
+.legal-icon { width: 38px; height: 38px; background: rgba(245,200,66,.15); border: 1px solid rgba(245,200,66,.3); color: var(--gold); border-radius: var(--radius-xs); display: flex; align-items: center; justify-content: center; font-size: 17px; flex-shrink: 0; font-family: var(--font-display); font-weight: 700; }
+.legal-banner-head h3 { font-family: var(--font-display); font-size: 18px; font-weight: 700; color: var(--txt); letter-spacing: -0.01em; }
+.legal-text { font-size: 13px; color: rgba(238,244,255,.7); line-height: 1.85; font-weight: 300; }
+.legal-text strong { color: var(--txt); font-weight: 600; }
+.legal-clause { display: flex; gap: 12px; margin: 10px 0; align-items: flex-start; }
+.clause-num { font-family: var(--font-display); font-size: 10px; font-weight: 700; color: var(--gold); flex-shrink: 0; margin-top: 3px; min-width: 24px; letter-spacing: 0.05em; }
+
+/* ── CONSENT ── */
+.consent-list { display: flex; flex-direction: column; }
+.consent-row { display: flex; align-items: flex-start; gap: 14px; padding: 15px 0; border-bottom: 1px solid var(--glass-border); cursor: pointer; transition: background 0.15s; border-radius: 4px; }
+.consent-row:first-child { padding-top: 0; }
+.consent-row:last-child { border-bottom: none; padding-bottom: 0; }
+.consent-row:hover { background: rgba(255,255,255,.02); }
+.consent-tick { width: 20px; height: 20px; border: 1.5px solid var(--muted2); border-radius: var(--radius-xs); flex-shrink: 0; margin-top: 1px; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 800; color: var(--bg); transition: all 0.18s; cursor: pointer; }
+.consent-tick.on { background: var(--mint); border-color: var(--mint); }
+.consent-tick.on::after { content: '✓'; }
+.consent-copy { font-size: 13px; color: rgba(238,244,255,.7); line-height: 1.65; font-weight: 300; }
+.consent-copy strong { color: var(--txt); font-weight: 600; }
+
+/* ── ALERT ── */
+.alert { display: flex; gap: 12px; align-items: flex-start; padding: 14px 18px; border-radius: var(--radius-sm); font-size: 13px; margin-bottom: 16px; font-weight: 400; line-height: 1.6; }
+.alert.warn { background: rgba(245,200,66,.07); border: 1px solid rgba(245,200,66,.22); color: rgba(245,200,66,.9); }
+.alert.info { background: var(--sky-dim); border: 1px solid rgba(135,206,235,.22); color: rgba(135,206,235,.9); }
+.alert.error { background: var(--coral-dim); border: 1px solid rgba(255,127,110,.25); color: rgba(255,127,110,.9); }
+.alert-icon { font-size: 15px; flex-shrink: 0; margin-top: 1px; }
+
+/* ── UPLOAD ── */
+.upload-zone { border: 1.5px dashed var(--glass-border); border-radius: var(--radius-sm); padding: 40px 24px; text-align: center; cursor: pointer; transition: all 0.2s; position: relative; background: rgba(255,255,255,.02); }
+.upload-zone:hover, .upload-zone.dragging { border-color: rgba(135,206,235,.4); background: var(--sky-dim); }
+.upload-zone input[type=file] { position: absolute; inset: 0; opacity: 0; cursor: pointer; width: 100%; height: 100%; }
+.upload-emoji { font-size: 30px; margin-bottom: 12px; }
+.upload-zone h4 { font-family: var(--font-display); font-size: 14px; font-weight: 600; margin-bottom: 5px; color: var(--txt); }
+.upload-zone p { font-size: 12px; color: var(--muted2); font-weight: 300; }
+.upload-status { margin-top: 12px; font-size: 13px; font-weight: 600; color: var(--mint); display: none; font-family: var(--font-display); }
+.upload-status.show { display: block; }
+.media-grid { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 14px; }
+.media-thumb { width: 80px; height: 80px; border-radius: var(--radius-xs); overflow: hidden; border: 1px solid var(--glass-border); position: relative; display: flex; align-items: center; justify-content: center; }
+.media-thumb img { width: 100%; height: 100%; object-fit: cover; }
+
+/* ── SUMMARY TABLE ── */
+.summary-table { width: 100%; border-collapse: collapse; }
+.summary-table tr { border-bottom: 1px solid var(--glass-border); }
+.summary-table tr:last-child { border-bottom: none; }
+.summary-table td { padding: 10px 0; vertical-align: top; font-size: 13px; color: var(--txt); }
+.summary-table td:first-child { font-family: var(--font-display); font-size: 10px; font-weight: 600; letter-spacing: 0.1em; color: var(--muted2); text-transform: uppercase; width: 36%; padding-right: 16px; padding-top: 13px; }
+
+/* ── NAV ── */
+.nav-row { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-top: 40px; padding-top: 28px; border-top: 1px solid var(--glass-border); }
+.nav-back { display: flex; align-items: center; gap: 6px; background: var(--glass); border: 1px solid var(--glass-border); color: var(--muted); border-radius: var(--radius-xs); padding: 11px 22px; font-family: var(--font-body); font-size: 13px; font-weight: 500; cursor: pointer; transition: all 0.18s; }
+.nav-back:hover { border-color: rgba(255,255,255,.16); color: var(--txt); background: var(--glass-hover); }
+.nav-next { display: flex; align-items: center; gap: 8px; background: linear-gradient(135deg, rgba(135,206,235,.18) 0%, rgba(109,232,200,.14) 100%); border: 1px solid rgba(135,206,235,.35); color: var(--sky); border-radius: var(--radius-xs); padding: 12px 30px; font-family: var(--font-display); font-size: 14px; font-weight: 600; cursor: pointer; transition: all 0.18s; flex: 1; max-width: 260px; justify-content: center; letter-spacing: 0.02em; }
+.nav-next:hover { background: linear-gradient(135deg, rgba(135,206,235,.28) 0%, rgba(109,232,200,.22) 100%); border-color: rgba(135,206,235,.55); box-shadow: var(--glow-sky); transform: translateY(-1px); color: #c8eeff; }
+.nav-next:active { transform: translateY(0); }
+.nav-next:disabled { opacity: 0.35; cursor: not-allowed; transform: none; }
+.btn-submit { background: linear-gradient(135deg, rgba(255,127,110,.2) 0%, rgba(255,179,138,.15) 100%); border: 1px solid rgba(255,127,110,.4); color: var(--coral); font-size: 14px; padding: 13px 34px; max-width: 320px; }
+.btn-submit:hover { background: linear-gradient(135deg, rgba(255,127,110,.32) 0%, rgba(255,179,138,.24) 100%); border-color: rgba(255,127,110,.6); box-shadow: var(--glow-coral); color: #ffb3a9; }
+
+/* ── SUCCESS ── */
+#success-screen { display: none; text-align: center; padding: 80px 24px; animation: slideIn 0.4s ease; }
+.success-mark { width: 68px; height: 68px; background: linear-gradient(135deg, rgba(109,232,200,.25), rgba(135,206,235,.2)); border: 1px solid rgba(109,232,200,.4); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 28px; font-size: 28px; color: var(--mint); box-shadow: 0 0 30px rgba(109,232,200,.2); }
+#success-screen h2 { font-family: var(--font-display); font-size: clamp(32px, 5vw, 48px); font-weight: 800; margin-bottom: 14px; letter-spacing: -0.02em; background: linear-gradient(135deg, var(--sky), var(--mint)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+#success-screen .sub { color: var(--muted); font-size: 15px; max-width: 460px; margin: 0 auto 52px; font-weight: 300; line-height: 1.75; }
+.next-steps { background: var(--glass); border: 1px solid var(--glass-border); border-radius: var(--radius); padding: 36px; max-width: 520px; margin: 0 auto 24px; text-align: left; box-shadow: var(--shadow); }
+.next-steps h3 { font-family: var(--font-display); font-size: 20px; font-weight: 700; margin-bottom: 24px; color: var(--txt); }
+.next-step-item { display: flex; gap: 16px; margin-bottom: 20px; align-items: flex-start; }
+.next-step-item:last-child { margin-bottom: 0; }
+.step-num { width: 28px; height: 28px; background: linear-gradient(135deg, rgba(135,206,235,.2), rgba(109,232,200,.15)); border: 1px solid rgba(135,206,235,.3); color: var(--sky); border-radius: 50%; font-family: var(--font-display); font-size: 12px; font-weight: 700; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+.step-desc { font-size: 13px; line-height: 1.65; color: rgba(238,244,255,.65); font-weight: 300; }
+.step-desc strong { color: var(--txt); font-weight: 600; }
+
+/* ── POST-SUCCESS UPLOAD ── */
+.upload-card { background: var(--glass); border: 1px solid var(--glass-border); border-radius: var(--radius); padding: 36px; max-width: 520px; margin: 0 auto; text-align: left; box-shadow: var(--shadow); }
+.upload-card h3 { font-family: var(--font-display); font-size: 20px; font-weight: 700; margin-bottom: 8px; color: var(--txt); }
+.upload-card .sub2 { font-size: 13px; color: var(--muted); margin-bottom: 22px; font-weight: 300; line-height: 1.65; }
+.btn-send-media { display: none; width: 100%; margin-top: 16px; background: linear-gradient(135deg, rgba(255,140,66,.18), rgba(255,179,138,.12)); border: 1px solid rgba(255,140,66,.35); color: var(--peach); border-radius: var(--radius-xs); padding: 13px 24px; font-family: var(--font-display); font-size: 14px; font-weight: 600; cursor: pointer; transition: all 0.18s; letter-spacing: 0.02em; }
+.btn-send-media:hover { background: linear-gradient(135deg, rgba(255,140,66,.28), rgba(255,179,138,.2)); border-color: rgba(255,140,66,.55); box-shadow: 0 0 24px rgba(255,140,66,.18); }
+.btn-send-media.show { display: block; }
+
+/* ── FOOTER ── */
+.site-footer { border-top: 1px solid var(--glass-border); text-align: center; padding: 24px; font-family: var(--font-display); font-size: 10px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted2); position: relative; z-index: 1; opacity: 0.9; }
+.footer-logo { width: 24px; height: 24px; object-fit: contain; opacity: 0.4; vertical-align: middle; margin-right: 8px; }
+
+/* ── COST BADGES ── */
+.cost-badge { font-family: var(--font-display); font-size: 11px; font-weight: 700; padding: 2px 8px; border-radius: 100px; flex-shrink: 0; letter-spacing: 0.04em; }
+.cost-badge.tier1 { color: var(--mint); background: rgba(109,232,200,.12); border: 1px solid rgba(109,232,200,.2); }
+.cost-badge.tier2 { color: var(--peach); background: rgba(255,179,138,.12); border: 1px solid rgba(255,179,138,.2); }
+.cost-badge.tier3 { color: var(--coral); background: rgba(255,127,110,.12); border: 1px solid rgba(255,127,110,.2); }
+
+/* ── UPSELL ── */
+.upsell-total-bar { background: linear-gradient(135deg, rgba(109,232,200,.08), rgba(135,206,235,.06)); border: 1px solid rgba(109,232,200,.2); border-radius: var(--radius-sm); padding: 18px 24px; margin-bottom: 20px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; position: sticky; top: 60px; z-index: 10; backdrop-filter: blur(12px); }
+.upsell-total-label { font-family: var(--font-display); font-size: 11px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--mint); }
+.upsell-total-amount { font-family: var(--font-display); font-size: 22px; font-weight: 800; color: var(--mint); }
+.upsell-category { font-family: var(--font-display); font-size: 13px; font-weight: 700; color: var(--txt); margin-bottom: 16px; letter-spacing: 0.02em; }
+.upsell-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.upsell-item { display: flex; align-items: center; gap: 12px; padding: 14px 16px; border: 1px solid var(--glass-border); border-radius: var(--radius-xs); cursor: pointer; transition: all 0.18s; background: rgba(255,255,255,.02); }
+.upsell-item:hover { border-color: rgba(135,206,235,.3); background: rgba(135,206,235,.04); }
+.upsell-item input[type=checkbox] { width: 16px; height: 16px; flex-shrink: 0; accent-color: var(--sky); cursor: pointer; }
+.upsell-item:has(input:checked) { border-color: rgba(135,206,235,.45); background: rgba(135,206,235,.07); }
+.upsell-info { flex: 1; min-width: 0; }
+.upsell-name { font-family: var(--font-display); font-size: 13px; font-weight: 600; color: var(--txt); margin-bottom: 3px; }
+.upsell-desc { font-size: 11px; color: var(--muted2); font-weight: 300; line-height: 1.4; }
+.upsell-tier { font-family: var(--font-display); font-size: 12px; font-weight: 700; flex-shrink: 0; }
+.upsell-tier.tier1 { color: var(--mint); }
+.upsell-tier.tier2 { color: var(--peach); }
+.upsell-tier.tier3 { color: var(--coral); }
+
+/* ── COLOR WHEEL ── */
+.color-wheel-wrap { margin-top: 16px; }
+.color-wheel-canvas-wrap { display: flex; gap: 20px; align-items: flex-start; flex-wrap: wrap; }
+#colorWheelCanvas { border-radius: 50%; cursor: crosshair; flex-shrink: 0; touch-action: none; box-shadow: 0 4px 24px rgba(0,0,0,.4); }
+.color-wheel-controls { flex: 1; min-width: 160px; display: flex; flex-direction: column; gap: 12px; }
+.color-preview-swatch { width: 100%; height: 52px; border-radius: var(--radius-xs); border: 1px solid var(--glass-border); transition: background 0.15s; }
+.color-hex-display { font-family: var(--font-display); font-size: 13px; font-weight: 700; color: var(--txt); letter-spacing: 0.08em; text-transform: uppercase; }
+.color-picker-hex-input { background: rgba(255,255,255,.05); border: 1px solid var(--glass-border); border-radius: var(--radius-xs); color: var(--txt); font-family: var(--font-display); font-size: 13px; padding: 8px 12px; width: 100%; letter-spacing: 0.06em; }
+.color-picker-hex-input:focus { outline: none; border-color: rgba(135,206,235,.5); }
+.color-palette-row { display: flex; gap: 8px; flex-wrap: wrap; }
+.palette-swatch { width: 28px; height: 28px; border-radius: 50%; border: 2px solid transparent; cursor: pointer; transition: transform 0.15s, border-color 0.15s; position: relative; }
+.palette-swatch:hover { transform: scale(1.15); }
+.palette-swatch.active { border-color: white; transform: scale(1.2); }
+.palette-swatch .del-btn { position: absolute; top: -4px; right: -4px; width: 14px; height: 14px; background: rgba(0,0,0,.7); border: none; border-radius: 50%; color: white; font-size: 8px; cursor: pointer; display: none; align-items: center; justify-content: center; line-height: 1; }
+.palette-swatch:hover .del-btn { display: flex; }
+.btn-add-color { background: var(--sky-dim); border: 1px solid rgba(135,206,235,.3); color: var(--sky); border-radius: var(--radius-xs); padding: 8px 14px; font-family: var(--font-display); font-size: 12px; font-weight: 600; cursor: pointer; transition: all 0.18s; letter-spacing: 0.04em; }
+.btn-add-color:hover { background: rgba(135,206,235,.25); }
+.lightness-slider-wrap { display: flex; flex-direction: column; gap: 5px; }
+.lightness-label { font-size: 11px; color: var(--muted2); font-family: var(--font-display); font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; }
+#lightnessSlider { -webkit-appearance: none; appearance: none; width: 100%; height: 6px; border-radius: 3px; background: linear-gradient(90deg, black, white); outline: none; cursor: pointer; }
+#lightnessSlider::-webkit-slider-thumb { -webkit-appearance: none; width: 16px; height: 16px; border-radius: 50%; background: white; border: 2px solid rgba(0,0,0,.3); cursor: pointer; box-shadow: 0 2px 6px rgba(0,0,0,.4); }
+
+/* ── SUBMIT OVERLAY ── */
+.submit-overlay { display: none; position: fixed; inset: 0; background: rgba(6,15,26,.92); backdrop-filter: blur(16px); z-index: 999; align-items: center; justify-content: center; flex-direction: column; gap: 20px; text-align: center; padding: 40px; }
+.submit-overlay.show { display: flex; }
+.submit-spinner { width: 52px; height: 52px; border: 3px solid rgba(135,206,235,.2); border-top-color: var(--sky); border-radius: 50%; animation: spin 0.8s linear infinite; }
+@keyframes spin { to { transform: rotate(360deg); } }
+.submit-overlay h3 { font-family: var(--font-display); font-size: 22px; font-weight: 700; color: var(--txt); }
+.submit-overlay p { color: var(--muted); font-size: 14px; max-width: 340px; }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 600px) {
+  .card, .legal-banner, .next-steps, .upload-card { padding: 22px 20px; }
+  .choices.grid-2, .choices.grid-3, .upsell-grid { grid-template-columns: 1fr; }
+  .field-row { grid-template-columns: 1fr; }
+  .nav-next { max-width: none; }
+  .btn-submit { max-width: none; }
+  .header-inner { flex-direction: column; align-items: flex-start; gap: 10px; }
+  .header-progress { max-width: 100%; width: 100%; }
+}
+</style>
+</head>
+<body>
+
+<!-- LOADING OVERLAY -->
+<div class="submit-overlay" id="submitOverlay">
+  <div class="submit-spinner"></div>
+  <h3>Sending Your Form…</h3>
+  <p>Hang tight — your information is being sent securely to SymPolar. This takes just a moment.</p>
+</div>
+
+<!-- STICKY HEADER -->
+<header class="site-header">
+  <div class="header-inner">
+    <div class="header-brand-wrap">
+      <img src="image/icon.png" class="header-logo" alt="SymPolar" id="headerLogo">
+      <div>
+        <div class="header-brand">SymPolar</div>
+        <div class="header-sub">Client Intake Form</div>
+      </div>
+    </div>
+    <div class="header-progress">
+      <div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
+      <span class="progress-text" id="progressText">1 / 10</span>
+    </div>
+  </div>
+</header>
+
+<!-- STEP PIPS -->
+<div class="steps-bar">
+  <div class="steps-inner" id="stepPips"></div>
+</div>
+
+<!-- HERO -->
+<div class="hero" id="heroBlock">
+  <div class="hero-logo-wrap">
+    <img src="image/icon.png" class="hero-logo" alt="SymPolar LLC">
+  </div>
+  <div class="hero-tag">SymPolar LLC · Website Launch Authorization</div>
+  <h1>Let's Build <em>Your</em><br>Website.</h1>
+  <p>Affordable, professional websites for small businesses. Complete this form and we'll have your quote ready within 24–48 hours. No payment until you approve everything.</p>
+  <div class="hero-badges">
+    <span class="hero-badge">⚡ Fast Turnaround</span>
+    <span class="hero-badge">💎 $50/mo Flat</span>
+    <span class="hero-badge">🔒 No Surprises</span>
+  </div>
+</div>
+
+<!-- FORM CONTAINER -->
+<div class="container">
+
+  <!-- ══ SEC 1: CLIENT INFO ══ -->
+  <div class="form-section active" id="sec-1">
+    <span class="section-label">Section 01 of 10</span>
+    <h2 class="section-title">Client Information</h2>
+    <p class="section-sub">Basic contact and business details — how we identify and reach you throughout the project.</p>
+    <div class="card">
+      <div class="field">
+        <div class="field-label">Business Name (Public-Facing) <span class="req">*</span></div>
+        <input type="text" id="f-biz-name" placeholder="e.g. Cape Coral Cleaning Co.">
+        <div class="field-error" id="e-biz-name">Required — please enter your business name.</div>
+      </div>
+      <div class="field">
+        <div class="field-label">Legal Business Name <span class="opt">optional</span></div>
+        <input type="text" id="f-legal-name" placeholder="If different from above">
+      </div>
+      <div class="field-row">
+        <div class="field">
+          <div class="field-label">Primary Contact Name <span class="req">*</span></div>
+          <input type="text" id="f-contact-name" placeholder="Your full name">
+          <div class="field-error" id="e-contact-name">Required.</div>
+        </div>
+        <div class="field">
+          <div class="field-label">Phone <span class="opt">optional</span></div>
+          <input type="tel" id="f-phone" placeholder="(239) 000-0000">
+        </div>
+      </div>
+      <div class="field">
+        <div class="field-label">Email Address <span class="req">*</span></div>
+        <input type="email" id="f-email" placeholder="you@yourbusiness.com">
+        <div class="field-error" id="e-email">Please enter a valid email address.</div>
+      </div>
+      <div class="field">
+        <div class="field-label">Country <span class="req">*</span></div>
+        <select id="f-country">
+          <option value="">Select country...</option>
+          <option>United States</option><option>Canada</option><option>United Kingdom</option><option>European Union</option><option>Other</option>
+        </select>
+        <div class="field-error" id="e-country">Please select your country.</div>
+      </div>
+    </div>
+    <div class="nav-row">
+      <div></div>
+      <button class="nav-next" onclick="advance(1)">Continue <span>→</span></button>
+    </div>
+  </div>
+
+  <!-- ══ SEC 2: BRAND & IDENTITY ══ -->
+  <div class="form-section" id="sec-2">
+    <span class="section-label">Section 02 of 10</span>
+    <h2 class="section-title">Brand & Identity</h2>
+    <p class="section-sub">Your visual identity guides every design decision. Be as specific as possible.</p>
+    <div class="card">
+      <div class="field">
+        <div class="field-label">Do you have a logo? <span class="req">*</span></div>
+        <div class="choices grid-2" id="logo-choice">
+          <button type="button" class="choice-btn" data-group="has-logo" data-value="yes" onclick="pickRadio(this,'has-logo'); showConditional('logo-upload-wrap', true)"><span class="radio-dot"></span> Yes, I have one</button>
+          <button type="button" class="choice-btn" data-group="has-logo" data-value="no" onclick="pickRadio(this,'has-logo'); showConditional('logo-upload-wrap', false)"><span class="radio-dot"></span> No — text branding is fine</button>
+        </div>
+        <div class="field-error" id="e-has-logo">Please select one.</div>
+        <div class="conditional" id="logo-upload-wrap">
+          <div class="field-label" style="margin-top:20px;">Upload Your Logo <span class="opt">optional — attach later if needed</span></div>
+          <p class="field-hint" style="margin-bottom:10px;">PNG, JPG, or SVG preferred. Note your logo filename below — you'll attach it manually to the email that opens on submit.</p>
+          <div class="upload-zone" id="logo-zone">
+            <input type="file" id="f-logo" accept=".png,.jpg,.jpeg,.svg,.gif" onchange="handleLogo(this)">
+            <div class="upload-emoji">🖼</div>
+            <h4>Click to select your logo</h4>
+            <p>PNG · JPG · SVG · GIF — attach to the email that opens</p>
+          </div>
+          <div class="upload-status" id="logo-status"></div>
+        </div>
+      </div>
+      <hr class="divider">
+      <div class="field">
+        <div class="field-label">Brand Colors <span class="opt">optional</span></div>
+        <div class="field-hint" style="margin-bottom:14px;">Pick your brand colors using the wheel, or type a hex code. Selections are saved and included in your submission.</div>
+        <div class="color-wheel-wrap">
+          <div class="color-wheel-canvas-wrap">
+            <canvas id="colorWheelCanvas" width="160" height="160"></canvas>
+            <div class="color-wheel-controls">
+              <div class="color-preview-swatch" id="colorPreviewSwatch"></div>
+              <div class="color-hex-display" id="colorHexDisplay">#87CEEB</div>
+              <input type="text" class="color-picker-hex-input" id="colorHexInput" value="#87CEEB" placeholder="#hex or color name" oninput="onHexInput(this.value)">
+              <div class="lightness-slider-wrap">
+                <div class="lightness-label">Brightness</div>
+                <input type="range" id="lightnessSlider" min="0" max="100" value="50" oninput="onLightnessChange(this.value)">
+              </div>
+              <button type="button" class="btn-add-color" onclick="addColorToPalette()">＋ Add to Palette</button>
+            </div>
+          </div>
+          <div style="margin-top:14px;">
+            <div class="lightness-label" style="margin-bottom:8px;">Your Brand Palette</div>
+            <div class="color-palette-row" id="colorPaletteRow"><span style="font-size:12px;color:var(--muted2);line-height:28px;">Click the wheel, then add colors →</span></div>
+          </div>
+          <input type="hidden" id="f-colors" value="">
+        </div>
+      </div>
+      <div class="field">
+        <div class="field-label">Brand Tone — select all that apply <span class="req">*</span></div>
+        <div class="choices" id="brand-tone-group">
+          <button type="button" class="choice-btn" data-group="brand-tone" data-value="Professional" onclick="toggleCheck(this,'brand-tone')"><span class="check-box"></span> Professional</button>
+          <button type="button" class="choice-btn" data-group="brand-tone" data-value="Casual" onclick="toggleCheck(this,'brand-tone')"><span class="check-box"></span> Casual</button>
+          <button type="button" class="choice-btn" data-group="brand-tone" data-value="Warm" onclick="toggleCheck(this,'brand-tone')"><span class="check-box"></span> Warm</button>
+          <button type="button" class="choice-btn" data-group="brand-tone" data-value="Bold" onclick="toggleCheck(this,'brand-tone')"><span class="check-box"></span> Bold</button>
+          <button type="button" class="choice-btn" data-group="brand-tone" data-value="Minimal" onclick="toggleCheck(this,'brand-tone')"><span class="check-box"></span> Minimal</button>
+          <button type="button" class="choice-btn" data-group="brand-tone" data-value="Edgy" onclick="toggleCheck(this,'brand-tone')"><span class="check-box"></span> Edgy</button>
+        </div>
+        <div class="field-error" id="e-brand-tone">Please select at least one.</div>
+      </div>
+      <div class="field">
+        <div class="field-label">Words or Phrases to AVOID <span class="opt">optional</span></div>
+        <textarea id="f-avoid" placeholder="e.g. cheap, budget, discount, aggressive..."></textarea>
+      </div>
+    </div>
+    <div class="nav-row">
+      <button class="nav-back" onclick="goBack(2)">← Back</button>
+      <button class="nav-next" onclick="advance(2)">Continue →</button>
+    </div>
+  </div>
+
+  <!-- ══ SEC 3: BUSINESS DETAILS ══ -->
+  <div class="form-section" id="sec-3">
+    <span class="section-label">Section 03 of 10</span>
+    <h2 class="section-title">Business Details</h2>
+    <p class="section-sub">Operational info that shapes your website structure — hours, location presence, and credentials.</p>
+    <div class="card">
+      <div class="field">
+        <div class="field-label">How should your location appear on your website? <span class="req">*</span></div>
+        <div class="field-hint" style="margin-bottom:12px;">This affects your footer, contact page, and local SEO setup.</div>
+        <div class="choices stack" id="location-mode-group">
+          <button type="button" class="choice-btn" data-group="location-mode" data-value="Full Address" onclick="pickRadio(this,'location-mode'); showConditional('loc-address-wrap',true); showConditional('loc-area-wrap',false);"><span class="radio-dot"></span><span><strong>Display my full business address</strong> — I have a physical location or office clients visit</span></button>
+          <button type="button" class="choice-btn" data-group="location-mode" data-value="Service Area Only" onclick="pickRadio(this,'location-mode'); showConditional('loc-address-wrap',false); showConditional('loc-area-wrap',true);"><span class="radio-dot"></span><span><strong>Emphasize my service area</strong> — I travel to clients or work remotely</span></button>
+          <button type="button" class="choice-btn" data-group="location-mode" data-value="Both" onclick="pickRadio(this,'location-mode'); showConditional('loc-address-wrap',true); showConditional('loc-area-wrap',true);"><span class="radio-dot"></span><span><strong>Show both</strong> — I have a location AND serve a wider area</span></button>
+          <button type="button" class="choice-btn" data-group="location-mode" data-value="No Location" onclick="pickRadio(this,'location-mode'); showConditional('loc-address-wrap',false); showConditional('loc-area-wrap',false);"><span class="radio-dot"></span><span><strong>No location needed</strong> — fully online / location not relevant</span></button>
+        </div>
+        <div class="field-error" id="e-location-mode">Please select one.</div>
+        <div class="conditional" id="loc-address-wrap">
+          <div class="field-label" style="margin-top:20px;">Business Address <span class="opt">optional</span></div>
+          <input type="text" id="f-address" placeholder="e.g. 1234 Cape Coral Pkwy, Cape Coral, FL 33904">
+        </div>
+        <div class="conditional" id="loc-area-wrap">
+          <div class="field-label" style="margin-top:20px;">Area(s) Served <span class="opt">optional</span></div>
+          <input type="text" id="f-area-served" placeholder="e.g. Cape Coral, Fort Myers, Lee County, SW Florida">
+        </div>
+      </div>
+      <hr class="divider">
+      <div class="field">
+        <div class="field-label">Business Hours <span class="req">*</span></div>
+        <textarea id="f-hours" placeholder="e.g. Mon–Fri 8am–6pm, Sat by appointment, Sun closed"></textarea>
+        <div class="field-error" id="e-hours">Please enter your business hours.</div>
+      </div>
+      <div class="field">
+        <div class="field-label">Age Restrictions <span class="opt">optional</span></div>
+        <input type="text" id="f-age" placeholder="e.g. 18+ only, 21+ for alcohol-related services">
+      </div>
+      <div class="field">
+        <div class="field-label">Licensed and/or Insured? <span class="opt">optional</span></div>
+        <div class="choices grid-3" id="licensed-group">
+          <button type="button" class="choice-btn" data-group="licensed" data-value="Yes" onclick="pickRadio(this,'licensed')"><span class="radio-dot"></span> Yes</button>
+          <button type="button" class="choice-btn" data-group="licensed" data-value="No" onclick="pickRadio(this,'licensed')"><span class="radio-dot"></span> No</button>
+          <button type="button" class="choice-btn" data-group="licensed" data-value="N/A" onclick="pickRadio(this,'licensed')"><span class="radio-dot"></span> Not Applicable</button>
+        </div>
+      </div>
+    </div>
+    <div class="nav-row">
+      <button class="nav-back" onclick="goBack(3)">← Back</button>
+      <button class="nav-next" onclick="advance(3)">Continue →</button>
+    </div>
+  </div>
+
+  <!-- ══ SEC 4: SERVICES & POLICIES ══ -->
+  <div class="form-section" id="sec-4">
+    <span class="section-label">Section 04 of 10</span>
+    <h2 class="section-title">Services & Policies</h2>
+    <p class="section-sub">What you offer, how you price it, and how you handle payments — this drives your site's core content.</p>
+    <div class="card">
+      <div style="font-family:var(--font-display);font-size:11px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--sky);margin-bottom:18px;">Your Services</div>
+      <div class="field">
+        <div class="field-label">List Your Services <span class="req">*</span></div>
+        <textarea id="f-services" style="min-height:120px;" placeholder="e.g.&#10;— Residential cleaning&#10;— Deep cleans&#10;— Move-in / move-out&#10;— Commercial spaces"></textarea>
+        <div class="field-hint">Type them out, paste from a doc, or upload a menu/service list below.</div>
+        <div class="field-error" id="e-services">Please describe your services — or note them above and upload a file.</div>
+      </div>
+      <div class="field">
+        <div class="field-label">Upload a Menu or Service List <span class="opt">optional</span></div>
+        <div class="field-hint" style="margin-bottom:10px;">PDF, image, Word doc, or spreadsheet. Note the filename — you'll attach it to the email that opens on submit.</div>
+        <div class="upload-zone" id="services-zone">
+          <input type="file" id="f-services-file" accept=".pdf,.doc,.docx,.xls,.xlsx,.png,.jpg,.jpeg,.csv" onchange="handleServicesFile(this)">
+          <div class="upload-emoji">📋</div>
+          <h4>Click to select your service list</h4>
+          <p>PDF · DOC · XLS · PNG · JPG</p>
+        </div>
+        <div class="upload-status" id="services-file-status"></div>
+      </div>
+    </div>
+    <div class="card">
+      <div style="font-family:var(--font-display);font-size:11px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--sky);margin-bottom:18px;">Pricing on Your Website</div>
+      <div class="field">
+        <div class="field-label">Would you like to display pricing on your site? <span class="req">*</span></div>
+        <div class="choices grid-2" id="show-pricing-group">
+          <button type="button" class="choice-btn" data-group="show-pricing" data-value="Yes" onclick="pickRadio(this,'show-pricing'); showConditional('pricing-detail-wrap',true);"><span class="radio-dot"></span> Yes — show pricing</button>
+          <button type="button" class="choice-btn" data-group="show-pricing" data-value="No" onclick="pickRadio(this,'show-pricing'); showConditional('pricing-detail-wrap',false);"><span class="radio-dot"></span> No — keep it off the site</button>
+        </div>
+        <div class="field-error" id="e-show-pricing">Please select one.</div>
+        <div class="conditional" id="pricing-detail-wrap">
+          <div class="field-label" style="margin-top:22px;">Pricing Format <span class="req">*</span></div>
+          <div class="choices grid-2" id="pricing-group" style="margin-bottom:16px;">
+            <button type="button" class="choice-btn" data-group="pricing" data-value="Fixed" onclick="pickRadio(this,'pricing'); showConditional('pricing-input-wrap',true); showConditional('pricing-upload-wrap',false);"><span class="radio-dot"></span> Fixed / Set Prices</button>
+            <button type="button" class="choice-btn" data-group="pricing" data-value="Starting At" onclick="pickRadio(this,'pricing'); showConditional('pricing-input-wrap',true); showConditional('pricing-upload-wrap',false);"><span class="radio-dot"></span> Starting At…</button>
+            <button type="button" class="choice-btn" data-group="pricing" data-value="Quote Only" onclick="pickRadio(this,'pricing'); showConditional('pricing-input-wrap',false); showConditional('pricing-upload-wrap',false);"><span class="radio-dot"></span> Quote / Estimate Only</button>
+            <button type="button" class="choice-btn" data-group="pricing" data-value="Upload Menu" onclick="pickRadio(this,'pricing'); showConditional('pricing-input-wrap',false); showConditional('pricing-upload-wrap',true);"><span class="radio-dot"></span> Upload Price Menu / PDF</button>
+          </div>
+          <div class="conditional" id="pricing-input-wrap">
+            <div class="field-label">Enter Your Pricing Details <span class="opt">optional</span></div>
+            <textarea id="f-pricing-custom" style="min-height:100px;" placeholder="e.g.&#10;Basic Clean — starting at $80&#10;Deep Clean — starting at $150&#10;Move-Out — from $200"></textarea>
+          </div>
+          <div class="conditional" id="pricing-upload-wrap">
+            <div class="field-label" style="margin-bottom:10px;">Upload Price Menu / PDF <span class="opt">optional</span></div>
+            <div class="upload-zone" id="pricing-zone">
+              <input type="file" id="f-pricing-file" accept=".pdf,.doc,.docx,.png,.jpg,.jpeg" onchange="handlePricingFile(this)">
+              <div class="upload-emoji">💲</div>
+              <h4>Upload your pricing document</h4>
+              <p>PDF · DOC · PNG · JPG</p>
+            </div>
+            <div class="upload-status" id="pricing-file-status"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <div style="font-family:var(--font-display);font-size:11px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--sky);margin-bottom:18px;">Payment Policies</div>
+      <div class="field">
+        <div class="field-label">Payment Policy Highlights — select all that apply <span class="opt">optional</span></div>
+        <div class="choices" id="payment-policy-group">
+          <button type="button" class="choice-btn" data-group="payment-policy" data-value="Deposit Required" onclick="toggleCheck(this,'payment-policy')"><span class="check-box"></span> Deposit Required</button>
+          <button type="button" class="choice-btn" data-group="payment-policy" data-value="Free Quote" onclick="toggleCheck(this,'payment-policy')"><span class="check-box"></span> Free Quote</button>
+          <button type="button" class="choice-btn" data-group="payment-policy" data-value="Coupons Accepted" onclick="toggleCheck(this,'payment-policy')"><span class="check-box"></span> Coupons Accepted</button>
+          <button type="button" class="choice-btn" data-group="payment-policy" data-value="Pay After Service" onclick="toggleCheck(this,'payment-policy')"><span class="check-box"></span> Pay After Service</button>
+          <button type="button" class="choice-btn" data-group="payment-policy" data-value="Financing Available" onclick="toggleCheck(this,'payment-policy')"><span class="check-box"></span> Financing Available</button>
+          <button type="button" class="choice-btn" data-group="payment-policy" data-value="Payment Plans" onclick="toggleCheck(this,'payment-policy')"><span class="check-box"></span> Payment Plans</button>
+          <button type="button" class="choice-btn" data-group="payment-policy" data-value="Cash Only" onclick="toggleCheck(this,'payment-policy')"><span class="check-box"></span> Cash Only</button>
+          <button type="button" class="choice-btn" data-group="payment-policy" data-value="Card/Online" onclick="toggleCheck(this,'payment-policy')"><span class="check-box"></span> Card / Online Accepted</button>
+          <button type="button" class="choice-btn" data-group="payment-policy" data-value="Venmo/Zelle" onclick="toggleCheck(this,'payment-policy')"><span class="check-box"></span> Venmo / Zelle</button>
+          <button type="button" class="choice-btn" data-group="payment-policy" data-value="Refund Policy" onclick="toggleCheck(this,'payment-policy')"><span class="check-box"></span> Refund Policy</button>
+        </div>
+      </div>
+      <div class="field">
+        <div class="field-label">Additional Payment Details <span class="opt">optional</span></div>
+        <textarea id="f-payment-notes" placeholder="e.g. 50% deposit required at booking. Balance due upon completion. No refunds within 48 hours of appointment..."></textarea>
+      </div>
+      <div class="field">
+        <div class="field-label">Cancellation / Reschedule Policy <span class="opt">optional</span></div>
+        <textarea id="f-cancel" placeholder="e.g. 24-hour notice required. Late cancellations may be charged a convenience fee..."></textarea>
+      </div>
+    </div>
+    <div class="nav-row">
+      <button class="nav-back" onclick="goBack(4)">← Back</button>
+      <button class="nav-next" onclick="advance(4)">Continue →</button>
+    </div>
+  </div>
+
+  <!-- ══ SEC 5: BOOKING & CONTACT ══ -->
+  <div class="form-section" id="sec-5">
+    <span class="section-label">Section 05 of 10</span>
+    <h2 class="section-title">Booking & Contact Flow</h2>
+    <p class="section-sub">How should visitors reach you? This shapes your site's primary calls-to-action.</p>
+    <div class="card">
+      <div class="field">
+        <div class="field-label">Primary Call-to-Action — select all that apply <span class="req">*</span></div>
+        <div class="choices stack" id="cta-group">
+          <button type="button" class="choice-btn" data-group="cta" data-value="Book a Consultation" onclick="toggleCheck(this,'cta'); toggleConditionalCheck('booking-wrap','cta','Book a Consultation')"><span class="check-box"></span><span style="flex:1">Book a Consultation / Appointment</span><span class="cost-badge tier2">$$</span></button>
+          <button type="button" class="choice-btn" data-group="cta" data-value="Contact Form" onclick="toggleCheck(this,'cta')"><span class="check-box"></span><span style="flex:1">Contact Form</span><span class="cost-badge tier1">$</span></button>
+          <button type="button" class="choice-btn" data-group="cta" data-value="Walk-Ins Welcome" onclick="toggleCheck(this,'cta')"><span class="check-box"></span><span style="flex:1">Walk-Ins Welcome</span><span class="cost-badge tier1">$</span></button>
+          <button type="button" class="choice-btn" data-group="cta" data-value="Phone Call" onclick="toggleCheck(this,'cta')"><span class="check-box"></span><span style="flex:1">Phone / Call Now Button</span><span class="cost-badge tier1">$</span></button>
+          <button type="button" class="choice-btn" data-group="cta" data-value="Instagram DM" onclick="toggleCheck(this,'cta')"><span class="check-box"></span><span style="flex:1">Instagram DM</span><span class="cost-badge tier1">$</span></button>
+          <button type="button" class="choice-btn" data-group="cta" data-value="Email Direct" onclick="toggleCheck(this,'cta')"><span class="check-box"></span><span style="flex:1">Email Button (direct mailto link)</span><span class="cost-badge tier1">$</span></button>
+          <button type="button" class="choice-btn" data-group="cta" data-value="Subscribe to Newsletter" onclick="toggleCheck(this,'cta')"><span class="check-box"></span><span style="flex:1">Subscribe to Newsletter / Email List</span><span class="cost-badge tier2">$$</span></button>
+          <button type="button" class="choice-btn" data-group="cta" data-value="None" onclick="toggleCheck(this,'cta')"><span class="check-box"></span><span style="flex:1">None of the above — informational only</span><span class="cost-badge tier1">$</span></button>
+          <button type="button" class="choice-btn" data-group="cta" data-value="Other" onclick="toggleCheck(this,'cta'); toggleConditionalCheck('cta-other-wrap','cta','Other')"><span class="check-box"></span><span style="flex:1">Other — I'll describe it</span><span class="cost-badge tier3">$$$</span></button>
+        </div>
+        <div class="field-error" id="e-cta">Please select at least one option.</div>
+        <div class="conditional" id="booking-wrap">
+          <div class="field-label" style="margin-top:20px;">Booking Platform <span class="opt">optional</span></div>
+          <input type="text" id="f-booking" placeholder="e.g. Calendly, Square, Acuity, Mindbody, Jane...">
+        </div>
+        <div class="conditional" id="cta-other-wrap">
+          <div class="field-label" style="margin-top:20px;">Describe Your Custom CTA <span class="opt">optional</span></div>
+          <textarea id="f-cta-other" style="min-height:72px;" placeholder="e.g. WhatsApp chat button, Shopify store link, custom intake form..."></textarea>
+        </div>
+      </div>
+      <hr class="divider">
+      <div class="field">
+        <div class="field-label">Expected Response Time <span class="req">*</span></div>
+        <div class="choices grid-3" id="response-group">
+          <button type="button" class="choice-btn" data-group="response" data-value="Same Day" onclick="pickRadio(this,'response')"><span class="radio-dot"></span> Same Day</button>
+          <button type="button" class="choice-btn" data-group="response" data-value="24 Hours" onclick="pickRadio(this,'response')"><span class="radio-dot"></span> 24 Hours</button>
+          <button type="button" class="choice-btn" data-group="response" data-value="48 Hours" onclick="pickRadio(this,'response')"><span class="radio-dot"></span> 48 Hours</button>
+        </div>
+        <div class="field-error" id="e-response">Please select one.</div>
+      </div>
+      <div class="field">
+        <div class="field-label">Auto-Reply Message <span class="opt">optional</span></div>
+        <textarea id="f-autoreply" placeholder="e.g. Thanks for reaching out! I'll get back to you within 24 hours. For urgent matters call (239) 000-0000."></textarea>
+      </div>
+    </div>
+    <div class="nav-row">
+      <button class="nav-back" onclick="goBack(5)">← Back</button>
+      <button class="nav-next" onclick="advance(5)">Continue →</button>
+    </div>
+  </div>
+
+  <!-- ══ SEC 6: SEO & ONLINE ══ -->
+  <div class="form-section" id="sec-6">
+    <span class="section-label">Section 06 of 10</span>
+    <h2 class="section-title">SEO & Online Presence</h2>
+    <p class="section-sub">Where you want to be found and how we connect your existing digital footprint.</p>
+    <div class="card">
+      <div class="field">
+        <div class="field-label">Primary Service Area(s) <span class="req">*</span></div>
+        <textarea id="f-service-area" placeholder="e.g. Cape Coral, Fort Myers, Lee County FL — or nationwide"></textarea>
+        <div class="field-error" id="e-service-area">Please enter your service area.</div>
+      </div>
+      <div class="field">
+        <div class="field-label">Keywords to Rank For <span class="opt">optional</span></div>
+        <textarea id="f-keywords" placeholder="e.g. house cleaning Cape Coral, maid service Fort Myers, residential cleaner Lee County"></textarea>
+      </div>
+      <div class="field-row">
+        <div class="field">
+          <div class="field-label">Instagram Username <span class="opt">optional</span></div>
+          <input type="text" id="f-instagram" placeholder="@yourbusiness">
+        </div>
+        <div class="field">
+          <div class="field-label">Google Business Profile <span class="opt">optional</span></div>
+          <input type="url" id="f-gbp" placeholder="https://g.page/...">
+        </div>
+      </div>
+      <div class="field">
+        <div class="field-label">Review Platforms — check all that apply <span class="opt">optional</span></div>
+        <div class="choices" id="review-group">
+          <button type="button" class="choice-btn" data-group="reviews" data-value="Google" onclick="toggleCheck(this,'reviews')"><span class="check-box"></span> Google</button>
+          <button type="button" class="choice-btn" data-group="reviews" data-value="Yelp" onclick="toggleCheck(this,'reviews')"><span class="check-box"></span> Yelp</button>
+          <button type="button" class="choice-btn" data-group="reviews" data-value="Facebook" onclick="toggleCheck(this,'reviews')"><span class="check-box"></span> Facebook</button>
+          <button type="button" class="choice-btn" data-group="reviews" data-value="Other" onclick="toggleCheck(this,'reviews')"><span class="check-box"></span> Other</button>
+        </div>
+      </div>
+      <div class="field">
+        <div class="field-label">Can we quote your reviews on the website? <span class="req">*</span></div>
+        <div class="choices grid-2" id="quote-reviews-group">
+          <button type="button" class="choice-btn" data-group="quote-reviews" data-value="Yes" onclick="pickRadio(this,'quote-reviews')"><span class="radio-dot"></span> Yes</button>
+          <button type="button" class="choice-btn" data-group="quote-reviews" data-value="No" onclick="pickRadio(this,'quote-reviews')"><span class="radio-dot"></span> No</button>
+        </div>
+        <div class="field-error" id="e-quote-reviews">Please select one.</div>
+      </div>
+    </div>
+    <div class="nav-row">
+      <button class="nav-back" onclick="goBack(6)">← Back</button>
+      <button class="nav-next" onclick="advance(6)">Continue →</button>
+    </div>
+  </div>
+
+  <!-- ══ SEC 7: ANALYTICS & DOMAIN ══ -->
+  <div class="form-section" id="sec-7">
+    <span class="section-label">Section 07 of 10</span>
+    <h2 class="section-title">Analytics & Domain</h2>
+    <p class="section-sub">Technical setup so we configure your site correctly from day one.</p>
+    <div class="card">
+      <div class="field">
+        <div class="field-label">Install Google Analytics? <span class="req">*</span></div>
+        <div class="choices grid-2" id="analytics-group">
+          <button type="button" class="choice-btn" data-group="analytics" data-value="Yes" onclick="pickRadio(this,'analytics')"><span class="radio-dot"></span> Yes</button>
+          <button type="button" class="choice-btn" data-group="analytics" data-value="No" onclick="pickRadio(this,'analytics')"><span class="radio-dot"></span> No</button>
+        </div>
+        <div class="field-error" id="e-analytics">Please select one.</div>
+      </div>
+      <div class="field">
+        <div class="field-label">Require a Privacy Policy page? <span class="req">*</span></div>
+        <div class="choices grid-2" id="privacy-group">
+          <button type="button" class="choice-btn" data-group="privacy" data-value="Yes" onclick="pickRadio(this,'privacy')"><span class="radio-dot"></span> Yes</button>
+          <button type="button" class="choice-btn" data-group="privacy" data-value="No" onclick="pickRadio(this,'privacy')"><span class="radio-dot"></span> No</button>
+        </div>
+        <div class="field-error" id="e-privacy">Please select one.</div>
+      </div>
+      <hr class="divider">
+      <div class="field">
+        <div class="field-label">Domain Name <span class="opt">optional</span></div>
+        <input type="text" id="f-domain" placeholder="e.g. mycoolbusiness.com">
+      </div>
+      <div class="field">
+        <div class="field-label">Domain Ownership <span class="req">*</span></div>
+        <div class="choices stack" id="domain-owner-group">
+          <button type="button" class="choice-btn" data-group="domain-owner" data-value="Client Owns It" onclick="pickRadio(this,'domain-owner')"><span class="radio-dot"></span> I own it — I'll provide access</button>
+          <button type="button" class="choice-btn" data-group="domain-owner" data-value="Developer Manages" onclick="pickRadio(this,'domain-owner')"><span class="radio-dot"></span> Developer registers and manages it ($50/mo includes renewal)</button>
+          <button type="button" class="choice-btn" data-group="domain-owner" data-value="Not Purchased Yet" onclick="pickRadio(this,'domain-owner')"><span class="radio-dot"></span> Not purchased yet — we'll figure it out together</button>
+        </div>
+        <div class="field-error" id="e-domain-owner">Please select one.</div>
+      </div>
+      <div class="field">
+        <div class="field-label">Target Launch Date <span class="opt">optional</span></div>
+        <input type="date" id="f-launch-date">
+      </div>
+    </div>
+    <div class="nav-row">
+      <button class="nav-back" onclick="goBack(7)">← Back</button>
+      <button class="nav-next" onclick="advance(7)">Continue →</button>
+    </div>
+  </div>
+
+  <!-- ══ SEC 8: LEGAL AGREEMENT ══ -->
+  <div class="form-section" id="sec-8">
+    <span class="section-label">Section 08 of 10</span>
+    <h2 class="section-title">Service Agreement</h2>
+    <p class="section-sub">Read carefully. Submitting this form constitutes your electronic signature.</p>
+    <div class="alert warn">
+      <span class="alert-icon">⚠</span>
+      <div>This section is legally binding under <strong>U.S. E-SIGN law</strong>. All boxes must be checked to proceed. Submission of this form serves as your electronic acceptance of the full service agreement.</div>
+    </div>
+    <div class="legal-banner">
+      <div class="legal-banner-head">
+        <div class="legal-icon">§</div>
+        <h3>Website Development, Delivery & Monthly Hosting Agreement</h3>
+      </div>
+      <div class="legal-text">
+        <p>By submitting this form, you (the <strong>Client</strong>) enter into a binding electronic agreement with the Provider. The following terms govern how your website is created, delivered, paid for, and supported.</p>
+        <div style="margin-top:20px;"><strong>1. Development Authorization & Payment</strong></div>
+        <div class="legal-clause"><span class="clause-num">1.1</span><span>Submission of this form <strong>authorizes Provider to begin website development</strong> using all submitted content, brand assets, and information.</span></div>
+        <div class="legal-clause"><span class="clause-num">1.2</span><span>Website files, previews, and live links will be delivered according to the <strong>payment schedule agreed upon in the invoice</strong> issued by Provider.</span></div>
+        <div class="legal-clause"><span class="clause-num">1.3</span><span>Payment terms — including any deposit, milestone payments, or due dates — will be specified in a <strong>separate written invoice</strong> and agreed upon by both parties prior to work commencing.</span></div>
+        <div class="legal-clause"><span class="clause-num">1.4</span><span>If payment is not made per the agreed schedule, <strong>Provider may pause or retain work</strong> until outstanding balances are resolved.</span></div>
+        <div style="margin-top:20px;"><strong>2. Monthly Hosting & Support</strong></div>
+        <div class="legal-clause"><span class="clause-num">2.1</span><span>Monthly hosting and support <strong>($50.00/month)</strong> begins only after final payment and delivery.</span></div>
+        <div class="legal-clause"><span class="clause-num">2.2</span><span>Services continue month-to-month until terminated by either party with written notice.</span></div>
+        <div class="legal-clause"><span class="clause-num">2.3</span><span>Includes: hosting, domain renewal management, up to 1 hr/month of minor updates, basic security monitoring.</span></div>
+        <div style="margin-top:20px;"><strong>3. Ownership & Brand Asset Authorization</strong></div>
+        <div class="legal-clause"><span class="clause-num">3.1</span><span>Client grants Provider a <strong>limited, non-exclusive license</strong> to use Client's name, logo, images, and business identity solely to build and demonstrate this website.</span></div>
+        <div class="legal-clause"><span class="clause-num">3.2</span><span><strong>Full ownership of website files transfers to Client only upon final payment</strong> of the development fee.</span></div>
+        <div class="legal-clause"><span class="clause-num">3.3</span><span>Client certifies they <strong>own or have legal rights</strong> to all submitted content.</span></div>
+        <div style="margin-top:20px;"><strong>4. Liability & Governing Law</strong></div>
+        <div class="legal-clause"><span class="clause-num">4.1</span><span>Provider's total liability shall not exceed amounts paid by Client in the 12 months preceding any claim.</span></div>
+        <div class="legal-clause"><span class="clause-num">4.2</span><span>This agreement is governed by the <strong>laws of the State of Florida</strong>. Disputes shall be resolved in Lee County, FL.</span></div>
+      </div>
+    </div>
+    <div class="card">
+      <div style="font-size:13px;font-weight:600;margin-bottom:16px;font-family:'Syne',sans-serif;">I confirm all of the following: <span style="color:var(--coral)">*</span></div>
+      <div class="consent-list" id="consent-list">
+        <div class="consent-row" onclick="toggleConsent('con1')"><div class="consent-tick" id="con1"></div><div class="consent-copy">I understand that <strong>payment terms will be outlined in a separate invoice</strong> issued by the Provider before work begins.</div></div>
+        <div class="consent-row" onclick="toggleConsent('con2')"><div class="consent-tick" id="con2"></div><div class="consent-copy">I understand that <strong>$50/month hosting begins after my website is delivered</strong> and will continue month-to-month until canceled.</div></div>
+        <div class="consent-row" onclick="toggleConsent('con3')"><div class="consent-tick" id="con3"></div><div class="consent-copy">I authorize Provider to <strong>use my submitted logo, images, and business identity</strong> to design and build my website.</div></div>
+        <div class="consent-row" onclick="toggleConsent('con4')"><div class="consent-tick" id="con4"></div><div class="consent-copy">I confirm I <strong>own or have legal rights to all content</strong> I am submitting, including logos and images.</div></div>
+        <div class="consent-row" onclick="toggleConsent('con5')"><div class="consent-tick" id="con5"></div><div class="consent-copy">I have read and <strong>agree to the full Website Development, Delivery & Monthly Hosting Agreement</strong> as stated above.</div></div>
+        <div class="consent-row" onclick="toggleConsent('con6')"><div class="consent-tick" id="con6"></div><div class="consent-copy">I understand that <strong>submitting this form is my electronic signature</strong> and constitutes a binding agreement under U.S. E-SIGN law.</div></div>
+      </div>
+      <div class="alert error" id="e-consents" style="display:none;margin-top:16px;margin-bottom:0;"><span class="alert-icon">!</span><div>All six boxes must be checked to proceed.</div></div>
+    </div>
+    <div class="card">
+      <div class="field">
+        <div class="field-label">Anything else we should know? <span class="opt">optional</span></div>
+        <textarea id="f-notes" placeholder="Special requirements, tight deadlines, references you love, existing brand guidelines..."></textarea>
+      </div>
+    </div>
+    <div class="nav-row">
+      <button class="nav-back" onclick="goBack(8)">← Back</button>
+      <button class="nav-next" onclick="advance(8)">Continue →</button>
+    </div>
+  </div>
+
+  <!-- ══ SEC 9: PREMIUM UPSELLS ══ -->
+  <div class="form-section" id="sec-9">
+    <span class="section-label">Section 09 of 10</span>
+    <h2 class="section-title">Enhance Your Website</h2>
+    <p class="section-sub">Optional premium features — select anything that interests you and we'll include a quote. <span style="color:var(--sky);">$</span> = simple · <span style="color:var(--peach);">$$</span> = moderate · <span style="color:var(--coral);">$$$</span> = advanced</p>
+    <div class="alert info" style="margin-bottom:20px;"><span class="alert-icon">✨</span><div>Nothing here is required. These are upgrades we can add to make your site stand out.</div></div>
+    <div class="upsell-total-bar">
+      <div class="upsell-total-label">Estimated Monthly Add-On</div>
+      <div class="upsell-total-amount">+ $<span id="upsell-total">0</span> <span style="font-size:12px;font-weight:400;color:var(--muted);">/ mo on top of $50 base</span></div>
+    </div>
+    <!-- DESIGN -->
+    <div class="card">
+      <div class="upsell-category">🎨 Design & Visual</div>
+      <div class="upsell-grid">
+        <label class="upsell-item"><input type="checkbox" class="upsell-check" data-cost="15" onchange="updateUpsellTotal()"><div class="upsell-info"><div class="upsell-name">Custom Animated Hero</div><div class="upsell-desc">Full-screen motion intro with your brand</div></div><div class="upsell-tier tier2">$$</div></label>
+        <label class="upsell-item"><input type="checkbox" class="upsell-check" data-cost="10" onchange="updateUpsellTotal()"><div class="upsell-info"><div class="upsell-name">Before & After Gallery</div><div class="upsell-desc">Swipeable comparison slider for results</div></div><div class="upsell-tier tier1">$</div></label>
+        <label class="upsell-item"><input type="checkbox" class="upsell-check" data-cost="10" onchange="updateUpsellTotal()"><div class="upsell-info"><div class="upsell-name">Video Background / Embed</div><div class="upsell-desc">Autoplay or YouTube embed in hero</div></div><div class="upsell-tier tier2">$$</div></label>
+        <label class="upsell-item"><input type="checkbox" class="upsell-check" data-cost="8" onchange="updateUpsellTotal()"><div class="upsell-info"><div class="upsell-name">Custom Icon Set</div><div class="upsell-desc">Branded icons matching your visual style</div></div><div class="upsell-tier tier1">$</div></label>
+        <label class="upsell-item"><input type="checkbox" class="upsell-check" data-cost="20" onchange="updateUpsellTotal()"><div class="upsell-info"><div class="upsell-name">Dark Mode Toggle</div><div class="upsell-desc">Let visitors switch between light/dark</div></div><div class="upsell-tier tier2">$$</div></label>
+        <label class="upsell-item"><input type="checkbox" class="upsell-check" data-cost="12" onchange="updateUpsellTotal()"><div class="upsell-info"><div class="upsell-name">Scroll Animations</div><div class="upsell-desc">Elements animate as user scrolls down</div></div><div class="upsell-tier tier1">$</div></label>
+        <label class="upsell-item"><input type="checkbox" class="upsell-check" data-cost="25" onchange="updateUpsellTotal()"><div class="upsell-info"><div class="upsell-name">Custom Cursor / Micro-interactions</div><div class="upsell-desc">Polished hover effects and cursor styling</div></div><div class="upsell-tier tier2">$$</div></label>
+        <label class="upsell-item"><input type="checkbox" class="upsell-check" data-cost="10" onchange="updateUpsellTotal()"><div class="upsell-info"><div class="upsell-name">Photo Editing / Optimization</div><div class="upsell-desc">We resize, compress, and enhance your images</div></div><div class="upsell-tier tier1">$</div></label>
+      </div>
+    </div>
+    <!-- CONTENT -->
+    <div class="card">
+      <div class="upsell-category">✍️ Content & Copy</div>
+      <div class="upsell-grid">
+        <label class="upsell-item"><input type="checkbox" class="upsell-check" data-cost="30" onchange="updateUpsellTotal()"><div class="upsell-info"><div class="upsell-name">Professional Copywriting</div><div class="upsell-desc">We write your About, Services, and Home page text</div></div><div class="upsell-tier tier2">$$</div></label>
+        <label class="upsell-item"><input type="checkbox" class="upsell-check" data-cost="20" onchange="updateUpsellTotal()"><div class="upsell-info"><div class="upsell-name">Blog / News Section</div><div class="upsell-desc">Ongoing content hub, great for SEO</div></div><div class="upsell-tier tier1">$</div></label>
+        <label class="upsell-item"><input type="checkbox" class="upsell-check" data-cost="25" onchange="updateUpsellTotal()"><div class="upsell-info"><div class="upsell-name">Monthly Blog Post (1x/mo)</div><div class="upsell-desc">Researched, written, and published for you</div></div><div class="upsell-tier tier2">$$</div></label>
+        <label class="upsell-item"><input type="checkbox" class="upsell-check" data-cost="15" onchange="updateUpsellTotal()"><div class="upsell-info"><div class="upsell-name">FAQ Page</div><div class="upsell-desc">Reduces support inquiries, boosts SEO</div></div><div class="upsell-tier tier1">$</div></label>
+        <label class="upsell-item"><input type="checkbox" class="upsell-check" data-cost="20" onchange="updateUpsellTotal()"><div class="upsell-info"><div class="upsell-name">Testimonials / Reviews Page</div><div class="upsell-desc">Curated reviews with star ratings and photos</div></div><div class="upsell-tier tier1">$</div></label>
+        <label class="upsell-item"><input type="checkbox" class="upsell-check" data-cost="15" onchange="updateUpsellTotal()"><div class="upsell-info"><div class="upsell-name">Team / Staff Page</div><div class="upsell-desc">Profiles, bios, and photos of your team</div></div><div class="upsell-tier tier1">$</div></label>
+      </div>
+    </div>
+    <!-- ECOMMERCE -->
+    <div class="card">
+      <div class="upsell-category">🛒 E-Commerce & Payments</div>
+      <div class="upsell-grid">
+        <label class="upsell-item"><input type="checkbox" class="upsell-check" data-cost="60" onchange="updateUpsellTotal()"><div class="upsell-info"><div class="upsell-name">Online Store (up to 20 products)</div><div class="upsell-desc">Full e-commerce with cart and checkout</div></div><div class="upsell-tier tier3">$$$</div></label>
+        <label class="upsell-item"><input type="checkbox" class="upsell-check" data-cost="25" onchange="updateUpsellTotal()"><div class="upsell-info"><div class="upsell-name">Online Payment / Invoicing</div><div class="upsell-desc">Stripe or Square embedded checkout</div></div><div class="upsell-tier tier2">$$</div></label>
+        <label class="upsell-item"><input type="checkbox" class="upsell-check" data-cost="20" onchange="updateUpsellTotal()"><div class="upsell-info"><div class="upsell-name">Digital Downloads / Products</div><div class="upsell-desc">Sell PDFs, guides, or digital files</div></div><div class="upsell-tier tier2">$$</div></label>
+        <label class="upsell-item"><input type="checkbox" class="upsell-check" data-cost="35" onchange="updateUpsellTotal()"><div class="upsell-info"><div class="upsell-name">Gift Card / Voucher System</div><div class="upsell-desc">Sell and redeem gift cards online</div></div><div class="upsell-tier tier3">$$$</div></label>
+        <label class="upsell-item"><input type="checkbox" class="upsell-check" data-cost="30" onchange="updateUpsellTotal()"><div class="upsell-info"><div class="upsell-name">Membership / Subscription Gating</div><div class="upsell-desc">Members-only content or recurring billing</div></div><div class="upsell-tier tier3">$$$</div></label>
+        <label class="upsell-item"><input type="checkbox" class="upsell-check" data-cost="15" onchange="updateUpsellTotal()"><div class="upsell-info"><div class="upsell-name">Tip / Gratuity Button</div><div class="upsell-desc">One-click tip link (Venmo, Square, etc.)</div></div><div class="upsell-tier tier1">$</div></label>
+      </div>
+    </div>
+    <!-- BOOKING -->
+    <div class="card">
+      <div class="upsell-category">📅 Booking & Automation</div>
+      <div class="upsell-grid">
+        <label class="upsell-item"><input type="checkbox" class="upsell-check" data-cost="25" onchange="updateUpsellTotal()"><div class="upsell-info"><div class="upsell-name">Booking System Integration</div><div class="upsell-desc">Calendly, Acuity, Square Appointments, etc.</div></div><div class="upsell-tier tier2">$$</div></label>
+        <label class="upsell-item"><input type="checkbox" class="upsell-check" data-cost="35" onchange="updateUpsellTotal()"><div class="upsell-info"><div class="upsell-name">Custom Intake / Quote Request Form</div><div class="upsell-desc">Multi-step form tailored to your service</div></div><div class="upsell-tier tier2">$$</div></label>
+        <label class="upsell-item"><input type="checkbox" class="upsell-check" data-cost="20" onchange="updateUpsellTotal()"><div class="upsell-info"><div class="upsell-name">Automated Email Confirmations</div><div class="upsell-desc">Auto-replies, reminders, and follow-ups</div></div><div class="upsell-tier tier2">$$</div></label>
+        <label class="upsell-item"><input type="checkbox" class="upsell-check" data-cost="30" onchange="updateUpsellTotal()"><div class="upsell-info"><div class="upsell-name">Live Chat Widget</div><div class="upsell-desc">Real-time chat or chatbot (Tidio, etc.)</div></div><div class="upsell-tier tier2">$$</div></label>
+        <label class="upsell-item"><input type="checkbox" class="upsell-check" data-cost="40" onchange="updateUpsellTotal()"><div class="upsell-info"><div class="upsell-name">CRM Integration</div><div class="upsell-desc">Connect to HubSpot, Zoho, or similar</div></div><div class="upsell-tier tier3">$$$</div></label>
+        <label class="upsell-item"><input type="checkbox" class="upsell-check" data-cost="20" onchange="updateUpsellTotal()"><div class="upsell-info"><div class="upsell-name">Newsletter Signup + Email List</div><div class="upsell-desc">Mailchimp / Klaviyo integration</div></div><div class="upsell-tier tier2">$$</div></label>
+      </div>
+    </div>
+    <!-- SEO -->
+    <div class="card">
+      <div class="upsell-category">📈 SEO & Marketing</div>
+      <div class="upsell-grid">
+        <label class="upsell-item"><input type="checkbox" class="upsell-check" data-cost="30" onchange="updateUpsellTotal()"><div class="upsell-info"><div class="upsell-name">Advanced Local SEO Setup</div><div class="upsell-desc">Schema markup, citations, Google profile link</div></div><div class="upsell-tier tier2">$$</div></label>
+        <label class="upsell-item"><input type="checkbox" class="upsell-check" data-cost="20" onchange="updateUpsellTotal()"><div class="upsell-info"><div class="upsell-name">Google Business Profile Optimization</div><div class="upsell-desc">Posts, photos, categories, Q&amp;A setup</div></div><div class="upsell-tier tier1">$</div></label>
+        <label class="upsell-item"><input type="checkbox" class="upsell-check" data-cost="25" onchange="updateUpsellTotal()"><div class="upsell-info"><div class="upsell-name">Open Graph / Social Share Cards</div><div class="upsell-desc">Branded previews when shared on social</div></div><div class="upsell-tier tier1">$</div></label>
+        <label class="upsell-item"><input type="checkbox" class="upsell-check" data-cost="45" onchange="updateUpsellTotal()"><div class="upsell-info"><div class="upsell-name">Monthly SEO Report</div><div class="upsell-desc">Keyword rankings, traffic, and recommendations</div></div><div class="upsell-tier tier2">$$</div></label>
+        <label class="upsell-item"><input type="checkbox" class="upsell-check" data-cost="15" onchange="updateUpsellTotal()"><div class="upsell-info"><div class="upsell-name">Pop-Up / Promo Banner</div><div class="upsell-desc">Announce sales, events, or offers</div></div><div class="upsell-tier tier1">$</div></label>
+        <label class="upsell-item"><input type="checkbox" class="upsell-check" data-cost="50" onchange="updateUpsellTotal()"><div class="upsell-info"><div class="upsell-name">Google / Meta Ad Landing Page</div><div class="upsell-desc">Conversion-optimized page for paid ads</div></div><div class="upsell-tier tier3">$$$</div></label>
+        <label class="upsell-item"><input type="checkbox" class="upsell-check" data-cost="20" onchange="updateUpsellTotal()"><div class="upsell-info"><div class="upsell-name">Social Media Feed Embed</div><div class="upsell-desc">Live Instagram or Facebook feed on site</div></div><div class="upsell-tier tier1">$</div></label>
+      </div>
+    </div>
+    <!-- TRUST -->
+    <div class="card">
+      <div class="upsell-category">🏆 Trust & Conversion</div>
+      <div class="upsell-grid">
+        <label class="upsell-item"><input type="checkbox" class="upsell-check" data-cost="20" onchange="updateUpsellTotal()"><div class="upsell-info"><div class="upsell-name">Live Google Review Feed</div><div class="upsell-desc">Auto-updating reviews pulled from Google</div></div><div class="upsell-tier tier2">$$</div></label>
+        <label class="upsell-item"><input type="checkbox" class="upsell-check" data-cost="15" onchange="updateUpsellTotal()"><div class="upsell-info"><div class="upsell-name">Trust Badges / Credentials Section</div><div class="upsell-desc">License numbers, insurance, certifications</div></div><div class="upsell-tier tier1">$</div></label>
+        <label class="upsell-item"><input type="checkbox" class="upsell-check" data-cost="25" onchange="updateUpsellTotal()"><div class="upsell-info"><div class="upsell-name">Case Study / Portfolio Page</div><div class="upsell-desc">Featured project breakdowns with results</div></div><div class="upsell-tier tier1">$</div></label>
+        <label class="upsell-item"><input type="checkbox" class="upsell-check" data-cost="35" onchange="updateUpsellTotal()"><div class="upsell-info"><div class="upsell-name">Video Testimonials Section</div><div class="upsell-desc">Embedded or uploaded client video reviews</div></div><div class="upsell-tier tier2">$$</div></label>
+        <label class="upsell-item"><input type="checkbox" class="upsell-check" data-cost="10" onchange="updateUpsellTotal()"><div class="upsell-info"><div class="upsell-name">Countdown Timer / Urgency Banner</div><div class="upsell-desc">Limited-time offers and promotions</div></div><div class="upsell-tier tier1">$</div></label>
+        <label class="upsell-item"><input type="checkbox" class="upsell-check" data-cost="20" onchange="updateUpsellTotal()"><div class="upsell-info"><div class="upsell-name">Press / Media Mentions Section</div><div class="upsell-desc">"As seen in" logos and news links</div></div><div class="upsell-tier tier1">$</div></label>
+      </div>
+    </div>
+    <!-- TECHNICAL -->
+    <div class="card">
+      <div class="upsell-category">⚙️ Technical & Advanced</div>
+      <div class="upsell-grid">
+        <label class="upsell-item"><input type="checkbox" class="upsell-check" data-cost="35" onchange="updateUpsellTotal()"><div class="upsell-info"><div class="upsell-name">Multilingual Site (2 languages)</div><div class="upsell-desc">English + Spanish or other language</div></div><div class="upsell-tier tier3">$$$</div></label>
+        <label class="upsell-item"><input type="checkbox" class="upsell-check" data-cost="25" onchange="updateUpsellTotal()"><div class="upsell-info"><div class="upsell-name">Password-Protected Client Portal</div><div class="upsell-desc">Private area for documents or updates</div></div><div class="upsell-tier tier2">$$</div></label>
+        <label class="upsell-item"><input type="checkbox" class="upsell-check" data-cost="20" onchange="updateUpsellTotal()"><div class="upsell-info"><div class="upsell-name">Cookie Consent Banner</div><div class="upsell-desc">GDPR/CCPA compliant popup</div></div><div class="upsell-tier tier1">$</div></label>
+        <label class="upsell-item"><input type="checkbox" class="upsell-check" data-cost="30" onchange="updateUpsellTotal()"><div class="upsell-info"><div class="upsell-name">Speed & Core Web Vitals Optimization</div><div class="upsell-desc">Faster load time = better Google rankings</div></div><div class="upsell-tier tier2">$$</div></label>
+        <label class="upsell-item"><input type="checkbox" class="upsell-check" data-cost="40" onchange="updateUpsellTotal()"><div class="upsell-info"><div class="upsell-name">Custom 404 / Error Page</div><div class="upsell-desc">Branded, helpful page for broken links</div></div><div class="upsell-tier tier1">$</div></label>
+        <label class="upsell-item"><input type="checkbox" class="upsell-check" data-cost="50" onchange="updateUpsellTotal()"><div class="upsell-info"><div class="upsell-name">API / Third-Party Integration</div><div class="upsell-desc">Connect custom tools, databases, or apps</div></div><div class="upsell-tier tier3">$$$</div></label>
+        <label class="upsell-item"><input type="checkbox" class="upsell-check" data-cost="15" onchange="updateUpsellTotal()"><div class="upsell-info"><div class="upsell-name">Google Maps Embed</div><div class="upsell-desc">Interactive map on your contact page</div></div><div class="upsell-tier tier1">$</div></label>
+        <label class="upsell-item"><input type="checkbox" class="upsell-check" data-cost="45" onchange="updateUpsellTotal()"><div class="upsell-info"><div class="upsell-name">Monthly Maintenance Plan (expanded)</div><div class="upsell-desc">3 hrs/mo updates, priority support, backups</div></div><div class="upsell-tier tier2">$$</div></label>
+      </div>
+    </div>
+    <!-- TOTAL SUMMARY -->
+    <div class="card" style="background:rgba(109,232,200,.06);border-color:rgba(109,232,200,.2);">
+      <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px;">
+        <div>
+          <div style="font-family:var(--font-display);font-size:13px;font-weight:700;color:var(--mint);letter-spacing:0.08em;text-transform:uppercase;margin-bottom:6px;">Your Estimated Monthly Total</div>
+          <div style="font-size:13px;color:var(--muted);font-weight:300;">Base hosting $50 + selected add-ons</div>
+        </div>
+        <div style="font-family:var(--font-display);font-size:32px;font-weight:800;color:var(--mint);">$<span id="upsell-grand-total">50</span><span style="font-size:14px;font-weight:400;color:var(--muted)">/mo</span></div>
+      </div>
+      <div style="margin-top:16px;font-size:12px;color:var(--muted2);">* Estimates only. Final pricing confirmed in your project quote.</div>
+    </div>
+    <div class="nav-row">
+      <button class="nav-back" onclick="goBack(9)">← Back</button>
+      <button class="nav-next" onclick="advance(9)">Review & Submit →</button>
+    </div>
+  </div>
+
+  <!-- ══ SEC 10: FINAL CONFIRMATION ══ -->
+  <div class="form-section" id="sec-10">
+    <span class="section-label">Section 10 of 10</span>
+    <h2 class="section-title">Final Confirmation</h2>
+    <p class="section-sub">Review your submission before sending. Clicking Submit will open your email client with everything pre-filled — attach any files, then hit Send.</p>
+    <div class="card">
+      <div style="font-family:'Syne',sans-serif;font-size:10px;font-weight:600;letter-spacing:0.18em;color:var(--muted2);text-transform:uppercase;margin-bottom:16px;">Submission Summary</div>
+      <table class="summary-table" id="summary-table"></table>
+    </div>
+    <div class="card">
+      <div class="consent-row" onclick="toggleConsent('con-final')" style="border-bottom:none;padding:0;">
+        <div class="consent-tick" id="con-final"></div>
+        <div class="consent-copy"><strong>I confirm all information is accurate</strong> and I understand this submission constitutes my electronic agreement authorizing the Provider to begin work on my website.</div>
+      </div>
+      <div class="alert error" id="e-final" style="display:none;margin-top:16px;margin-bottom:0;"><span class="alert-icon">!</span><div>Please check the box to confirm before submitting.</div></div>
+    </div>
+    <div class="alert info" style="margin-top:0;">
+      <span class="alert-icon">⚡</span>
+      <div><strong>How this works:</strong> Clicking Submit sends your form data <strong>directly to SymPolar</strong> — no email app required. You'll see a confirmation on-screen within seconds. Any files you selected (logo, service list, etc.) will be listed in your confirmation for easy upload after. Your submission is legally binding upon clicking Submit.</div>
+    </div>
+    <div class="nav-row">
+      <button class="nav-back" onclick="goBack(10)">← Back</button>
+      <button class="nav-next btn-submit" onclick="submitForm()">⚡ Submit to SymPolar →</button>
+    </div>
+  </div>
+
+  <!-- ══ SUCCESS SCREEN ══ -->
+  <div id="success-screen">
+    <div class="success-mark">✓</div>
+    <h2>Submission Received.</h2>
+    <p class="sub">Your intake is on its way to SymPolar. You'll hear back within 24–48 business hours with your custom quote. Review it carefully — <strong>nothing is charged until you approve.</strong></p>
+    <div class="next-steps">
+      <h3>What Happens Next</h3>
+      <div class="next-step-item"><div class="step-num">1</div><div class="step-desc"><strong>You'll receive a custom quote</strong> within 1–2 business days based on your intake details and selected upgrades.</div></div>
+      <div class="next-step-item"><div class="step-num">2</div><div class="step-desc"><strong>Review and approve the quote.</strong> Payment terms will be outlined in the invoice — nothing is charged until you agree.</div></div>
+      <div class="next-step-item"><div class="step-num">3</div><div class="step-desc"><strong>Build begins</strong> once payment terms are confirmed. You'll receive progress updates throughout.</div></div>
+      <div class="next-step-item"><div class="step-num">4</div><div class="step-desc"><strong>Site goes live</strong> upon your approval. Monthly hosting of $50/mo begins after launch.</div></div>
+    </div>
+
+    <!-- POST-SUCCESS BRAND ASSETS — BOTH OPTIONS -->
+    <div class="upload-card" style="margin-top:0;">
+      <h3>📎 Upload Brand Assets & Photos</h3>
+      <p class="sub2">Send reference images, brand photos, your logo, or any inspiration. Two options — pick whichever is easier for you.</p>
+
+      <!-- OPTION A: Google Drive direct upload -->
+      <div style="background:rgba(109,232,200,.06);border:1px solid rgba(109,232,200,.2);border-radius:var(--radius-sm);padding:20px 22px;margin-bottom:14px;">
+        <div style="font-family:var(--font-display);font-size:12px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--mint);margin-bottom:8px;">Option A — Google Drive Upload</div>
+        <p style="font-size:13px;color:var(--muted);font-weight:300;line-height:1.65;margin-bottom:14px;">Click below to open our shared Drive folder and drop your files directly in. No email required — files land instantly in our project folder.</p>
+        <a id="drive-upload-btn" href="#" target="_blank" onclick="openDrive(event)"
+          style="display:inline-flex;align-items:center;gap:8px;background:linear-gradient(135deg,rgba(109,232,200,.2),rgba(135,206,235,.14));border:1px solid rgba(109,232,200,.4);color:var(--mint);border-radius:var(--radius-xs);padding:11px 22px;font-family:var(--font-display);font-size:13px;font-weight:700;cursor:pointer;transition:all 0.18s;text-decoration:none;letter-spacing:0.04em;">
+          ☁ Open Drive Upload Folder →
+        </a>
+      </div>
+
+      <!-- OPTION B: Email with file list -->
+      <div style="background:rgba(255,140,66,.05);border:1px solid rgba(255,140,66,.2);border-radius:var(--radius-sm);padding:20px 22px;">
+        <div style="font-family:var(--font-display);font-size:12px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--peach);margin-bottom:8px;">Option B — Send via Email</div>
+        <p style="font-size:13px;color:var(--muted);font-weight:300;line-height:1.65;margin-bottom:14px;">Select files below and we'll open a pre-addressed email with your file list. Attach the files in your email app and hit Send.</p>
+        <div class="upload-zone" id="media-zone">
+          <input type="file" id="f-media" accept="image/*,.pdf" multiple onchange="handleMedia(this)">
+          <div class="upload-emoji">🖼</div>
+          <h4>Click to select files (images, PDFs, references)</h4>
+          <p>Multiple files OK — up to ~20MB total per email</p>
+        </div>
+        <div class="media-grid" id="media-grid"></div>
+        <div class="alert info" id="media-rights-note" style="display:none;margin-top:14px;margin-bottom:0;">
+          <span class="alert-icon">ℹ</span>
+          <div>By submitting files you confirm you own or have rights to use them, and authorize Provider to use them in your website build.</div>
+        </div>
+        <button class="btn-send-media" id="btn-send-media" onclick="sendMediaEmail()">📎 Open Email to Send Files →</button>
+      </div>
+    </div>
+  </div>
+
+</div><!-- /container -->
+
+<!-- FOOTER WATERMARK -->
+<footer class="site-footer">
+  <img src="image/icon.png" class="footer-logo" alt="">
+  www.sympolar.com | © 2026 SymPolar LLC™ — Not legal advice. Consult a qualified attorney for jurisdiction-specific guidance.
+</footer>
+
+<script>
+// ════════════════════════════════════════════════════════════
+// SYMPOLAR LLC — CLIENT INTAKE FORM
+// Author: Vincent Gonzalez | © 2026 SymPolar LLC
+// ════════════════════════════════════════════════════════════
+//
+// HOW SUBMISSION WORKS:
+//   PRIMARY — Web3Forms (https://web3forms.com)
+//     Client submits → fetch() sends JSON to Web3Forms API →
+//     Web3Forms emails all data directly to YOU.
+//     No server, no backend, no email app opens.
+//     Files too large for inline are flagged in the email body.
+//
+//   FALLBACK — mailto:
+//     If Web3Forms fails (no internet, API error, etc.),
+//     the client's email app opens with all data pre-filled.
+//     Client attaches files manually and hits Send.
+//
+// ── SETUP (2 minutes) ──────────────────────────────────────
+//   1. Go to https://web3forms.com
+//   2. Enter YOUR email address → click "Create Access Key"
+//   3. Copy the key and paste it below as WEB3FORMS_KEY
+//   4. Replace FALLBACK_EMAIL with your actual email address
+//
+// ── GOOGLE DRIVE UPLOAD LINK (post-success assets) ─────────
+//   1. Create a shared Google Drive folder for client assets
+//   2. Get the shareable upload link (or use a Google Form)
+//   3. Paste it below as DRIVE_UPLOAD_URL
+//   Example: https://drive.google.com/drive/folders/YOUR_FOLDER_ID?usp=sharing
+// ════════════════════════════════════════════════════════════
+
+const WEB3FORMS_KEY   = '1827ca2a-ae66-41a2-b48a-5927fb2f89ef'; // ← get from web3forms.com
+const FALLBACK_EMAIL  = 'sympolarllc@gmail.com';           // ← your email (fallback only)
+const DRIVE_UPLOAD_URL = 'https://drive.google.com/drive/folders/17PyB0jDF0vLZOJVYBbadAWU5yhB670Q_'; // ← shared Drive folder link
+
+// ════════════════════════════
+// STATE
+// ════════════════════════════
+const TOTAL = 10;
+let current = 1;
+const consentState = {};
+let mediaFiles = [];
+const radioState = {};
+const checkState = {};
+
+// ════════════════════════════
+// INIT
+// ════════════════════════════
+document.addEventListener('DOMContentLoaded', () => {
+  buildPips();
+  updateUI();
+  initColorWheel();
+});
+
+// ════════════════════════════
+// STEP PIPS
+// ════════════════════════════
+function buildPips() {
+  const wrap = document.getElementById('stepPips');
+  for (let i = 1; i <= TOTAL; i++) {
+    const d = document.createElement('div');
+    d.className = 'step-pip';
+    d.id = 'pip-' + i;
+    wrap.appendChild(d);
+  }
+}
+
+function updateUI() {
+  const pct = ((current - 1) / (TOTAL - 1)) * 100;
+  document.getElementById('progressFill').style.width = pct + '%';
+  document.getElementById('progressText').textContent = current + ' / ' + TOTAL;
+  for (let i = 1; i <= TOTAL; i++) {
+    const pip = document.getElementById('pip-' + i);
+    if (pip) pip.className = 'step-pip' + (i === current ? ' active' : i < current ? ' done' : '');
+  }
+  document.getElementById('heroBlock').style.display = current === 1 ? 'block' : 'none';
+}
+
+// ════════════════════════════
+// NAVIGATION
+// ════════════════════════════
+function advance(from) {
+  if (!validate(from)) return;
+  if (from === 9) buildSummary();
+  document.getElementById('sec-' + from).classList.remove('active');
+  current = from + 1;
+  const nextEl = document.getElementById('sec-' + current);
+  if (nextEl) nextEl.classList.add('active');
+  updateUI();
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function goBack(from) {
+  document.getElementById('sec-' + from).classList.remove('active');
+  current = from - 1;
+  const prevEl = document.getElementById('sec-' + current);
+  if (prevEl) prevEl.classList.add('active');
+  updateUI();
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+// ════════════════════════════
+// CHOICE BUTTONS
+// ════════════════════════════
+function pickRadio(btn, group) {
+  document.querySelectorAll(`.choice-btn[data-group="${group}"]`).forEach(b => b.classList.remove('selected'));
+  btn.classList.add('selected');
+  radioState[group] = btn.dataset.value;
+}
+
+function toggleCheck(btn, group) {
+  btn.classList.toggle('selected');
+  if (!checkState[group]) checkState[group] = new Set();
+  if (btn.classList.contains('selected')) checkState[group].add(btn.dataset.value);
+  else checkState[group].delete(btn.dataset.value);
+}
+
+function getRadio(group) { return radioState[group] || null; }
+function getChecks(group) { return checkState[group] ? [...checkState[group]] : []; }
+
+// ════════════════════════════
+// CONDITIONALS
+// ════════════════════════════
+function showConditional(id, show) {
+  const el = document.getElementById(id);
+  if (el) el.classList.toggle('visible', show);
+}
+
+function toggleConditionalCheck(conditionalId, group, value) {
+  setTimeout(() => {
+    showConditional(conditionalId, getChecks(group).includes(value));
+  }, 0);
+}
+
+// ════════════════════════════
+// CONSENT TICKS
+// ════════════════════════════
+function toggleConsent(id) {
+  const el = document.getElementById(id);
+  if (!el) return;
+  consentState[id] = !consentState[id];
+  el.classList.toggle('on', consentState[id]);
+}
+
+// ════════════════════════════
+// FILE HANDLERS
+// ════════════════════════════
+function handleLogo(input) {
+  const status = document.getElementById('logo-status');
+  if (input.files && input.files[0]) {
+    status.textContent = '✓ Selected: ' + input.files[0].name + ' — attach this file to your email before sending';
+    status.classList.add('show');
+  }
+}
+
+function handleServicesFile(input) {
+  const status = document.getElementById('services-file-status');
+  if (input.files && input.files[0]) {
+    status.textContent = '✓ Selected: ' + input.files[0].name + ' — attach this to your email before sending';
+    status.classList.add('show');
+  }
+}
+
+function handlePricingFile(input) {
+  const status = document.getElementById('pricing-file-status');
+  if (input.files && input.files[0]) {
+    status.textContent = '✓ Selected: ' + input.files[0].name + ' — attach this to your email before sending';
+    status.classList.add('show');
+  }
+}
+
+// ════════════════════════════
+// POST-SUCCESS MEDIA UPLOAD
+// ════════════════════════════
+function handleMedia(input) {
+  mediaFiles = Array.from(input.files);
+  const grid = document.getElementById('media-grid');
+  const rights = document.getElementById('media-rights-note');
+  const btn = document.getElementById('btn-send-media');
+  grid.innerHTML = '';
+  mediaFiles.forEach(f => {
+    const div = document.createElement('div');
+    div.className = 'media-thumb';
+    if (f.type.startsWith('image/')) {
+      const img = document.createElement('img');
+      img.src = URL.createObjectURL(f);
+      div.appendChild(img);
+    } else {
+      div.style.cssText = 'font-size:10px;color:var(--muted);padding:6px;text-align:center;';
+      div.textContent = f.name;
+    }
+    grid.appendChild(div);
+  });
+  if (rights) rights.style.display = mediaFiles.length > 0 ? 'flex' : 'none';
+  if (btn) btn.classList.toggle('show', mediaFiles.length > 0);
+}
+
+// ════════════════════════════
+// UPSELL TOTAL
+// ════════════════════════════
+function updateUpsellTotal() {
+  const checks = document.querySelectorAll('.upsell-check:checked');
+  let total = 0;
+  checks.forEach(c => { total += parseInt(c.dataset.cost || 0); });
+  const el1 = document.getElementById('upsell-total');
+  const el2 = document.getElementById('upsell-grand-total');
+  if (el1) el1.textContent = total;
+  if (el2) el2.textContent = 50 + total;
+}
+
+function getUpsellList() {
+  const checks = document.querySelectorAll('.upsell-check:checked');
+  const list = [];
+  checks.forEach(c => {
+    const item = c.closest('.upsell-item');
+    if (item) {
+      const name = item.querySelector('.upsell-name');
+      if (name) list.push(name.textContent.trim() + ' (+$' + c.dataset.cost + '/mo)');
+    }
+  });
+  return list;
+}
+
+// ════════════════════════════════════════════════════════════
+// COLOR WHEEL
+// HSL wheel on canvas — click/drag picks hue+saturation,
+// brightness slider sets lightness. addColorToPalette() saves
+// hex codes to a hidden field included in the email body.
+// ════════════════════════════════════════════════════════════
+let pickedColor = '#87ceeb';
+let wheelLightness = 50;
+let palette = [];
+
+function initColorWheel() {
+  const canvas = document.getElementById('colorWheelCanvas');
+  if (!canvas) return;
+  drawWheel(canvas);
+  const onInteract = (e) => {
+    const rect = canvas.getBoundingClientRect();
+    const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+    const clientY = e.touches ? e.touches[0].clientY : e.clientY;
+    const x = clientX - rect.left - canvas.width / 2;
+    const y = clientY - rect.top - canvas.height / 2;
+    const angle = Math.atan2(y, x) * (180 / Math.PI);
+    const hue = (angle + 360) % 360;
+    const dist = Math.min(Math.sqrt(x * x + y * y), canvas.width / 2);
+    const sat = (dist / (canvas.width / 2)) * 100;
+    pickedColor = hslToHex(hue, sat, wheelLightness);
+    updateColorUI(pickedColor);
+  };
+  canvas.addEventListener('click', onInteract);
+  canvas.addEventListener('mousemove', e => { if (e.buttons === 1) onInteract(e); });
+  canvas.addEventListener('touchmove', e => { e.preventDefault(); onInteract(e); }, { passive: false });
+  canvas.addEventListener('touchstart', e => { e.preventDefault(); onInteract(e); }, { passive: false });
+  updateColorUI(pickedColor);
+}
+
+function drawWheel(canvas) {
+  const ctx = canvas.getContext('2d');
+  const cx = canvas.width / 2;
+  const cy = canvas.height / 2;
+  const r = cx - 2;
+  for (let angle = 0; angle < 360; angle++) {
+    const startAngle = (angle - 0.5) * Math.PI / 180;
+    const endAngle = (angle + 0.5) * Math.PI / 180;
+    const gradient = ctx.createRadialGradient(cx, cy, 0, cx, cy, r);
+    gradient.addColorStop(0, `hsl(${angle}, 0%, ${wheelLightness}%)`);
+    gradient.addColorStop(1, `hsl(${angle}, 100%, ${wheelLightness}%)`);
+    ctx.beginPath();
+    ctx.moveTo(cx, cy);
+    ctx.arc(cx, cy, r, startAngle, endAngle);
+    ctx.closePath();
+    ctx.fillStyle = gradient;
+    ctx.fill();
+  }
+}
+
+function onLightnessChange(val) {
+  wheelLightness = parseInt(val);
+  const canvas = document.getElementById('colorWheelCanvas');
+  if (canvas) drawWheel(canvas);
+  const hex = document.getElementById('colorHexInput').value;
+  const rgb = hexToRgb(hex);
+  if (rgb) {
+    const hsl = rgbToHsl(rgb.r, rgb.g, rgb.b);
+    pickedColor = hslToHex(hsl[0], hsl[1], wheelLightness);
+    updateColorUI(pickedColor);
+  }
+}
+
+function onHexInput(val) {
+  if (/^#[0-9A-Fa-f]{6}$/.test(val)) {
+    pickedColor = val.toUpperCase();
+    updateColorUI(pickedColor, false);
+  }
+}
+
+function updateColorUI(hex, updateInput = true) {
+  const swatch = document.getElementById('colorPreviewSwatch');
+  const display = document.getElementById('colorHexDisplay');
+  const input = document.getElementById('colorHexInput');
+  if (swatch) swatch.style.background = hex;
+  if (display) display.textContent = hex.toUpperCase();
+  if (input && updateInput) input.value = hex.toUpperCase();
+  pickedColor = hex;
+}
+
+function addColorToPalette() {
+  if (palette.includes(pickedColor)) return;
+  palette.push(pickedColor);
+  renderPalette();
+  const hidden = document.getElementById('f-colors');
+  if (hidden) hidden.value = palette.join(', ');
+}
+
+function renderPalette() {
+  const row = document.getElementById('colorPaletteRow');
+  if (!row) return;
+  if (palette.length === 0) {
+    row.innerHTML = '<span style="font-size:12px;color:var(--muted2);line-height:28px;">Click the wheel, then add colors →</span>';
+    return;
+  }
+  row.innerHTML = palette.map((c, i) => `
+    <div class="palette-swatch" style="background:${c};" title="${c}" onclick="selectPaletteSwatch('${c}')">
+      <button class="del-btn" type="button" onclick="event.stopPropagation(); removePaletteColor(${i})">✕</button>
+    </div>
+  `).join('');
+}
+
+function selectPaletteSwatch(hex) { pickedColor = hex; updateColorUI(hex); }
+
+function removePaletteColor(idx) {
+  palette.splice(idx, 1);
+  renderPalette();
+  const hidden = document.getElementById('f-colors');
+  if (hidden) hidden.value = palette.join(', ');
+}
+
+function hslToHex(h, s, l) {
+  s /= 100; l /= 100;
+  const a = s * Math.min(l, 1 - l);
+  const f = n => {
+    const k = (n + h / 30) % 12;
+    const color = l - a * Math.max(Math.min(k - 3, 9 - k, 1), -1);
+    return Math.round(255 * color).toString(16).padStart(2, '0');
+  };
+  return `#${f(0)}${f(8)}${f(4)}`;
+}
+
+function hexToRgb(hex) {
+  const r = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+  return r ? { r: parseInt(r[1],16), g: parseInt(r[2],16), b: parseInt(r[3],16) } : null;
+}
+
+function rgbToHsl(r, g, b) {
+  r /= 255; g /= 255; b /= 255;
+  const max = Math.max(r, g, b), min = Math.min(r, g, b);
+  let h, s, l = (max + min) / 2;
+  if (max === min) { h = s = 0; }
+  else {
+    const d = max - min;
+    s = l > 0.5 ? d / (2 - max - min) : d / (max + min);
+    switch (max) {
+      case r: h = ((g - b) / d + (g < b ? 6 : 0)) / 6; break;
+      case g: h = ((b - r) / d + 2) / 6; break;
+      case b: h = ((r - g) / d + 4) / 6; break;
+    }
+  }
+  return [h * 360, s * 100, l * 100];
+}
+
+// ════════════════════════════
+// VALIDATION
+// ════════════════════════════
+function setErr(id, show, inputId) {
+  const err = document.getElementById(id);
+  if (err) err.style.display = show ? 'flex' : 'none';
+  if (inputId) {
+    const inp = document.getElementById(inputId);
+    if (inp) inp.classList.toggle('has-error', show);
+  }
+}
+
+function validate(sec) {
+  let ok = true;
+  const req = (fId, eId) => { const el = document.getElementById(fId); const bad = !el || !el.value.trim(); setErr(eId, bad, fId); if (bad) ok = false; };
+  const reqEmail = (fId, eId) => { const el = document.getElementById(fId); const bad = !el || !el.value.trim() || !el.value.includes('@'); setErr(eId, bad, fId); if (bad) ok = false; };
+  const reqRadio = (group, eId) => { const v = getRadio(group); setErr(eId, !v); if (!v) ok = false; };
+  const reqCheck = (group, eId) => { const v = getChecks(group); setErr(eId, v.length === 0); if (v.length === 0) ok = false; };
+
+  if (sec === 1) {
+    req('f-biz-name','e-biz-name');
+    req('f-contact-name','e-contact-name');
+    reqEmail('f-email','e-email');
+    const country = document.getElementById('f-country');
+    const cBad = !country || !country.value;
+    setErr('e-country', cBad, 'f-country');
+    if (cBad) ok = false;
+  }
+  if (sec === 2) { reqRadio('has-logo','e-has-logo'); reqCheck('brand-tone','e-brand-tone'); }
+  if (sec === 3) { reqRadio('location-mode','e-location-mode'); req('f-hours','e-hours'); }
+  if (sec === 4) {
+    const svcText = document.getElementById('f-services');
+    const svcFile = document.getElementById('f-services-file');
+    const hasSvc = (svcText && svcText.value.trim()) || (svcFile && svcFile.files && svcFile.files.length > 0);
+    setErr('e-services', !hasSvc, 'f-services');
+    if (!hasSvc) ok = false;
+    reqRadio('show-pricing','e-show-pricing');
+  }
+  if (sec === 5) { reqCheck('cta','e-cta'); reqRadio('response','e-response'); }
+  if (sec === 6) { req('f-service-area','e-service-area'); reqRadio('quote-reviews','e-quote-reviews'); }
+  if (sec === 7) { reqRadio('analytics','e-analytics'); reqRadio('privacy','e-privacy'); reqRadio('domain-owner','e-domain-owner'); }
+  if (sec === 8) {
+    const needed = ['con1','con2','con3','con4','con5','con6'];
+    const allDone = needed.every(id => consentState[id]);
+    setErr('e-consents', !allDone);
+    if (!allDone) ok = false;
+  }
+  return ok;
+}
+
+// ════════════════════════════
+// SUMMARY TABLE (Section 10)
+// ════════════════════════════
+function buildSummary() {
+  const v = id => { const el = document.getElementById(id); return el && el.value.trim() ? el.value.trim() : '—'; };
+  const r = group => getRadio(group) || '—';
+  const c = group => getChecks(group).join(', ') || '—';
+  const upsells = getUpsellList();
+  const rows = [
+    ['Business Name', v('f-biz-name')],
+    ['Legal Name', v('f-legal-name')],
+    ['Contact', v('f-contact-name')],
+    ['Email', v('f-email')],
+    ['Phone', v('f-phone')],
+    ['Country', v('f-country')],
+    ['Location Mode', r('location-mode')],
+    ['Address', v('f-address')],
+    ['Area Served', v('f-area-served')],
+    ['Has Logo', r('has-logo')],
+    ['Brand Colors', v('f-colors') || (palette.length ? palette.join(', ') : '—')],
+    ['Brand Tone', c('brand-tone')],
+    ['Hours', v('f-hours')],
+    ['Services', v('f-services').substring(0,100) + (v('f-services').length > 100 ? '…' : '')],
+    ['Show Pricing', r('show-pricing')],
+    ['Pricing Format', r('pricing')],
+    ['Payment Policies', c('payment-policy')],
+    ['CTAs', c('cta')],
+    ['Response Time', r('response')],
+    ['Service Area (SEO)', v('f-service-area')],
+    ['Reviews', c('reviews')],
+    ['Analytics', r('analytics')],
+    ['Domain', v('f-domain')],
+    ['Domain Owner', r('domain-owner')],
+    ['Launch Date', v('f-launch-date')],
+    ['Add-Ons', upsells.length ? upsells.length + ' selected' : 'None'],
+    ['Est. Monthly', '$' + (document.getElementById('upsell-grand-total')?.textContent || '50') + '/mo'],
+  ];
+  const table = document.getElementById('summary-table');
+  if (table) table.innerHTML = rows.map(([k, val]) => `<tr><td>${k}</td><td>${val}</td></tr>`).join('');
+}
+
+// ════════════════════════════════════════════════════════════
+// SUBMIT FORM — Web3Forms primary, mailto fallback
+//
+// PRIMARY FLOW:
+//   1. Compile all form data into a formatted message string
+//   2. POST JSON to https://api.web3forms.com/submit
+//   3. Web3Forms emails the full data block to YOUR inbox
+//   4. On success → show success screen
+//   5. On failure → fallbackMailto() opens email app instead
+//
+// FILES:
+//   Browser security prevents auto-attaching files to API calls.
+//   Any files selected (logo, service list, pricing) are listed
+//   in the submission body so you know to request them.
+//   The post-success screen gives the client two ways to send:
+//   Google Drive upload OR mailto with file list.
+// ════════════════════════════════════════════════════════════
+async function submitForm() {
+  if (!consentState['con-final']) {
+    document.getElementById('e-final').style.display = 'flex';
+    return;
+  }
+
+  const v = id => { const el = document.getElementById(id); return el && el.value.trim() ? el.value.trim() : 'Not provided'; };
+  const r = group => getRadio(group) || 'Not selected';
+  const c = group => getChecks(group).join(', ') || 'None selected';
+  const ts = new Date().toLocaleString('en-US', { dateStyle: 'full', timeStyle: 'short' });
+  const upsells = getUpsellList();
+  const grandTotal = document.getElementById('upsell-grand-total')?.textContent || '50';
+
+  // List any files the client selected so they appear in your inbox
+  const logoInput = document.getElementById('f-logo');
+  const svcFileInput = document.getElementById('f-services-file');
+  const pricingFileInput = document.getElementById('f-pricing-file');
+  const attachList = [];
+  if (logoInput && logoInput.files[0]) attachList.push('LOGO: ' + logoInput.files[0].name);
+  if (svcFileInput && svcFileInput.files[0]) attachList.push('SERVICE LIST: ' + svcFileInput.files[0].name);
+  if (pricingFileInput && pricingFileInput.files[0]) attachList.push('PRICING DOC: ' + pricingFileInput.files[0].name);
+
+  // Build the complete formatted message body
+  const messageBody =
+`SYMPOLAR LLC — CLIENT INTAKE SUBMISSION
+Submitted: ${ts}
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+${attachList.length > 0
+  ? '📎 FILES SELECTED (client will upload separately):\n' + attachList.map(f => '   • ' + f).join('\n') + '\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n'
+  : ''}
+SECTION 1 — CLIENT INFORMATION
+  Business Name:        ${v('f-biz-name')}
+  Legal Name:           ${v('f-legal-name')}
+  Contact Person:       ${v('f-contact-name')}
+  Email:                ${v('f-email')}
+  Phone:                ${v('f-phone')}
+  Country:              ${v('f-country')}
+
+SECTION 2 — BRAND & IDENTITY
+  Has Logo:             ${r('has-logo')}
+  Brand Colors:         ${palette.length ? palette.join(', ') : v('f-colors')}
+  Brand Tone:           ${c('brand-tone')}
+  Words to Avoid:       ${v('f-avoid')}
+
+SECTION 3 — BUSINESS DETAILS
+  Location Display:     ${r('location-mode')}
+  Address:              ${v('f-address')}
+  Area Served:          ${v('f-area-served')}
+  Business Hours:       ${v('f-hours')}
+  Age Restrictions:     ${v('f-age')}
+  Licensed/Insured:     ${r('licensed')}
+
+SECTION 4 — SERVICES & POLICIES
+  Services:
+${v('f-services').split('\n').map(l => '    ' + l).join('\n')}
+
+  Show Pricing on Site: ${r('show-pricing')}
+  Pricing Format:       ${r('pricing')}
+  Pricing Details:      ${v('f-pricing-custom')}
+  Payment Policies:     ${c('payment-policy')}
+  Payment Notes:        ${v('f-payment-notes')}
+  Cancellation Policy:  ${v('f-cancel')}
+
+SECTION 5 — BOOKING & CONTACT
+  Primary CTAs:         ${c('cta')}
+  Booking Platform:     ${v('f-booking')}
+  Custom CTA:           ${v('f-cta-other')}
+  Response Time:        ${r('response')}
+  Auto-Reply Text:      ${v('f-autoreply')}
+
+SECTION 6 — SEO & ONLINE PRESENCE
+  Service Area:         ${v('f-service-area')}
+  Keywords:             ${v('f-keywords')}
+  Instagram:            ${v('f-instagram')}
+  Google Business:      ${v('f-gbp')}
+  Review Platforms:     ${c('reviews')}
+  Quote Reviews OK:     ${r('quote-reviews')}
+
+SECTION 7 — ANALYTICS & DOMAIN
+  Google Analytics:     ${r('analytics')}
+  Privacy Page:         ${r('privacy')}
+  Domain Name:          ${v('f-domain')}
+  Domain Ownership:     ${r('domain-owner')}
+  Target Launch:        ${v('f-launch-date')}
+
+SECTION 9 — SELECTED PREMIUM ADD-ONS
+${upsells.length > 0 ? upsells.map(u => '  • ' + u).join('\n') : '  None selected'}
+  Estimated Monthly Total: $${grandTotal}/mo (includes $50 base hosting)
+
+ADDITIONAL NOTES
+${v('f-notes')}
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+LEGAL AGREEMENT & ELECTRONIC SIGNATURE
+Timestamp: ${ts}
+
+Client individually confirmed each of the following:
+  [✓] Payment terms outlined in separate invoice before work begins
+  [✓] $50/month hosting begins after website delivery
+  [✓] Provider authorized to use submitted brand assets
+  [✓] Client owns / has rights to all submitted content
+  [✓] Client agrees to full Website Development, Delivery & Hosting Agreement
+  [✓] Submission is electronic signature under U.S. E-SIGN law
+  [✓] Final confirmation: all information accurate
+
+This submission constitutes a binding electronic agreement.
+Governing Law: State of Florida. Venue: Lee County, FL.
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━`;
+
+  const subject = `New Intake — ${v('f-biz-name')} — ${v('f-contact-name')}`;
+
+  // Show loading overlay
+  document.getElementById('submitOverlay').classList.add('show');
+
+  // ── PRIMARY: Web3Forms fetch ─────────────────────────────
+  // Sends all form data as JSON to Web3Forms, which emails
+  // the full block to YOUR inbox. No backend required.
+  try {
+    const response = await fetch('https://api.web3forms.com/submit', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+      body: JSON.stringify({
+        access_key:     WEB3FORMS_KEY,
+        subject:        subject,
+        from_name:      v('f-contact-name') + ' via SymPolar Intake',
+        replyto:        v('f-email'),
+        message:        messageBody,
+        // Structured fields — appear as separate rows in Web3Forms email
+        'Business Name':    v('f-biz-name'),
+        'Contact':          v('f-contact-name'),
+        'Client Email':     v('f-email'),
+        'Phone':            v('f-phone'),
+        'Country':          v('f-country'),
+        'Location Mode':    r('location-mode'),
+        'Brand Colors':     palette.length ? palette.join(', ') : 'Not specified',
+        'Has Logo':         r('has-logo'),
+        'Files Selected':   attachList.length ? attachList.join(' | ') : 'None',
+        'CTAs':             c('cta'),
+        'Response Time':    r('response'),
+        'Analytics':        r('analytics'),
+        'Domain':           v('f-domain'),
+        'Domain Owner':     r('domain-owner'),
+        'Add-Ons Count':    upsells.length.toString(),
+        'Est. Monthly':     '$' + grandTotal + '/mo',
+        'Agreed to Terms':  'Yes — E-SIGN confirmed at ' + ts,
+      })
+    });
+
+    const data = await response.json();
+    document.getElementById('submitOverlay').classList.remove('show');
+
+    if (data.success) {
+      // ✅ Web3Forms delivered — show success screen
+      showSuccessScreen();
+    } else {
+      // ❌ API returned error — fall back to mailto
+      console.warn('Web3Forms error:', data);
+      fallbackMailto(subject, messageBody);
+    }
+
+  } catch (err) {
+    // ❌ Network error — fall back to mailto
+    console.error('Web3Forms fetch failed:', err);
+    document.getElementById('submitOverlay').classList.remove('show');
+    fallbackMailto(subject, messageBody);
+  }
+}
+
+// ── Show success screen ───────────────────────────────────
+function showSuccessScreen() {
+  document.getElementById('sec-10').classList.remove('active');
+  document.getElementById('success-screen').style.display = 'block';
+  document.getElementById('heroBlock').style.display = 'none';
+  current = TOTAL;
+  document.getElementById('progressFill').style.width = '100%';
+  document.getElementById('progressText').textContent = '✓';
+  for (let i = 1; i <= TOTAL; i++) {
+    const pip = document.getElementById('pip-' + i);
+    if (pip) pip.className = 'step-pip done';
+  }
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+// ── Fallback mailto ───────────────────────────────────────
+// Used only when Web3Forms is unavailable (no internet, wrong
+// API key, rate limit, etc.). Opens the client's email app
+// with the full data pre-filled. They attach files and send.
+function fallbackMailto(subject, body) {
+  const mailto = `mailto:${FALLBACK_EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+  alert('Note: Direct send unavailable — your email app will open with everything pre-filled. Attach your files and hit Send.');
+  window.location.href = mailto;
+  setTimeout(showSuccessScreen, 800);
+}
+
+// ════════════════════════════════════════════════════════════
+// OPEN DRIVE UPLOAD
+// Opens the shared Drive folder in a new tab.
+// If the placeholder URL hasn't been set yet, shows a notice.
+// ════════════════════════════════════════════════════════════
+function openDrive(e) {
+  e.preventDefault();
+  if (!DRIVE_UPLOAD_URL || DRIVE_UPLOAD_URL === 'YOUR_GOOGLE_DRIVE_LINK_HERE') {
+    alert('Drive upload link not configured yet — use the email option below, or contact SymPolar directly to share your files.');
+    return;
+  }
+  window.open(DRIVE_UPLOAD_URL, '_blank');
+}
+
+// ════════════════════════════════════════════════════════════
+// POST-SUCCESS MEDIA EMAIL (Option B)
+//
+// Client selects files → previews render → clicking this
+// opens a pre-addressed email listing all selected filenames.
+// Client attaches files from their device before hitting Send.
+// Browser security prevents programmatic file attachment.
+// ════════════════════════════════════════════════════════════
+function sendMediaEmail() {
+  const bizName = document.getElementById('f-biz-name').value.trim() || 'Client';
+  const subject = `Brand Assets — ${bizName} (SymPolar LLC)`;
+  const body =
+`Hi SymPolar team,
+
+Please find my brand assets attached below for my website build.
+
+Business: ${bizName}
+
+FILES — please attach these before sending:
+${mediaFiles.map((f, i) => `  ${i + 1}. ${f.name} (${(f.size / 1024).toFixed(0)} KB)`).join('\n')}
+
+AUTHORIZATION:
+I confirm I own or have rights to all attached files and authorize SymPolar LLC to use them in the design and development of my website.
+
+Thank you,
+${bizName}`;
+
+  window.location.href = `mailto:${FALLBACK_EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+}
+</script>
+</body>
+</html>
